@@ -38,7 +38,8 @@ Example config with scopes:
             "username": "USERNAME",
             "apiKey": "API_KEY",
             "host": "lon.auth.api.rackspacecloud.com"
-          }
+          },
+          "container": "CONTAINER_NAME"
         }
     }
 }

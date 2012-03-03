@@ -78,12 +78,13 @@ app.post('/upload',  function(req, res) {
 });
 ```
 
-## Many Thanks to [Alleup](https://github.com/tih-ra/alleup)
-
 ## To-do's
 * Support amazon storage
 * Support filesystem storage
 * Remove using of `eval`
-* add remove file functionality
-* add functionality to get the image url's
-* write tests
+* Add functionality to remove files
+* Add functionality to get the image url
+* Add functionality to get remote images, process the image and then upload to various storage systems
+* Write tests
+
+### Many Thanks to [Alleup](https://github.com/tih-ra/alleup)

@@ -47,7 +47,7 @@ Example config with scopes:
 **Now you can use Imager**
 
 ```js
-var  Imager = require('alleup');
+var  Imager = require('imager');
 var imager = new Imager({storage : "rs", config_file: "path_to_imager_config.json"})
 ```
 **Note:** More storage systems yet to come
@@ -70,7 +70,7 @@ app.get('/upload_form', function(req, res) {
 
 app.post('/upload',  function(req, res) {
   //With Scope `projects` (look at example of configuration file)
-  alleup.upload(req, res, function(err, file, cdnUri, res){
+  imager.upload(req, res, function(err, file, cdnUri, res){
     console.log("FILE UPLOADED: " + cdnUri+'/'+file);
     // THIS YOU CAN SAVE FILE TO DATABASE FOR EXAMPLE
     res.end();

@@ -46,10 +46,10 @@ Example config with scopes:
 **Now you can use Imager**
 
 ```js
-    var  Imager = require('alleup');
-    var imager = new Imager({storage : "rs", config_file: "path_to_imager_config.json"})
+var  Imager = require('alleup');
+var imager = new Imager({storage : "rs", config_file: "path_to_imager_config.json"})
 ```
-  More storage systems yet to come
+**Note:** More storage systems yet to come
 
 ## UPLOAD
 
@@ -68,19 +68,18 @@ app.get('/upload_form', function(req, res) {
 });
 
 app.post('/upload',  function(req, res) {
- //With Scope `projects` (look at example of configuration file)
- alleup.upload(req, res, function(err, file, cdnUri, res){
-     console.log("FILE UPLOADED: " + cdnUri+'/'+file);
-     // THIS YOU CAN SAVE FILE TO DATABASE FOR EXAMPLE
-     res.end();
- }, 'projects');
-
+  //With Scope `projects` (look at example of configuration file)
+  alleup.upload(req, res, function(err, file, cdnUri, res){
+    console.log("FILE UPLOADED: " + cdnUri+'/'+file);
+    // THIS YOU CAN SAVE FILE TO DATABASE FOR EXAMPLE
+    res.end();
+  }, 'projects');
 });
 ```
 
-### Thanks to [Alleup](https://github.com/tih-ra/alleup)**
+## Many Thanks to [Alleup](https://github.com/tih-ra/alleup)
 
-### To-do's
+## To-do's
 * Support amazon storage
 * Support filesystem storage
 * Remove using of `eval`

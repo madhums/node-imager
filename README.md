@@ -14,34 +14,34 @@ Example config with scopes:
 
 ```js
 {
-    "variants": {
-        "projects": {
-          "resize": {
-              "mini" : "300x200",
-              "preview": "800x600"
-          },
-          "crop": {
-             "thumb": "200x200"
-          }
-        },
-
-        "gallery": {
-           "crop": {
-            "thumb": "100x100"
-           }
-        }
+  "variants": {
+    "projects": {
+      "resize": {
+        "mini" : "300x200",
+        "preview": "800x600"
+      },
+      "crop": {
+        "thumb": "200x200"
+      }
     },
 
-    "storage": {
-        "rs": {
-          "auth": {
-            "username": "USERNAME",
-            "apiKey": "API_KEY",
-            "host": "lon.auth.api.rackspacecloud.com"
-          },
-          "container": "CONTAINER_NAME"
-        }
+    "gallery": {
+      "crop": {
+        "thumb": "100x100"
+      }
     }
+  },
+
+  "storage": {
+    "rs": {
+      "auth": {
+        "username": "USERNAME",
+        "apiKey": "API_KEY",
+        "host": "lon.auth.api.rackspacecloud.com"
+      },
+      "container": "CONTAINER_NAME"
+    }
+  }
 }
 ```
 **Now you can use Imager**

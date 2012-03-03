@@ -1,7 +1,7 @@
 Imager
 =============
 
-Flexible way to resize and upload images to Rackspace cloudfiles for Node.js. Possible to add different versions of the same file in cropped or resized variant.
+A Node.js module to easily resize, crop and upload images to Rackspace cloudfiles. Possible to add different versions of the same file in cropped or resized variant.
 
 ## Installation
     $ npm install imager

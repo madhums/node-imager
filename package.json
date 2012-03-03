@@ -1,7 +1,7 @@
 {
   "author": "Madhusudhan Srinivasa <madhums8@gmail.com> (http://twitter.com/madhums)",
   "name": "imager",
-  "description": "Flexible way to resize and upload images to Rackspace cloudfiles",
+  "description": "Easy way to resize, crop and upload images to Rackspace cloudfiles",
   "version": "0.0.3",
   "keywords": ["upload", "image", "imagemagick", "rackspace", "cloudfiles", "resize", "file"],
   "homepage": "https://github.com/madhums/imager",

@@ -52,36 +52,44 @@ var imager = new Imager({storage : "rs", config_file: "path_to_imager_config.jso
 ```
 **Note:** More storage systems yet to come
 
-## UPLOAD
+## UPLOAD FILE
 
 **Upload example:**
 
 ```js
 app.get('/upload_form', function(req, res) {
   res.writeHead(200, {'content-type': 'text/html'});
-    res.end(
-      '<form action="/upload" enctype="multipart/form-data" method="post">'+
-        '<input type="text" name="title"><br>'+
-        '<input type="file" name="upload" multiple="multiple"><br>'+
-        '<input type="submit" value="Upload">'+
-      '</form>'
-    );
+  res.end(
+    '<form action="/upload_form" enctype="multipart/form-data" method="post">'+
+    '<input type="text" name="title"><br>'+
+    '<input type="file" name="image"><br>'+
+    '<input type="submit" value="Upload">'+
+    '</form>'
+  );
 });
 
 app.post('/upload',  function(req, res) {
-  //With Scope `projects` (look at example of configuration file)
-  imager.upload(req, res, function(err, file, cdnUri, res){
-    console.log("FILE UPLOADED: " + cdnUri+'/'+file);
-    // THIS YOU CAN SAVE FILE TO DATABASE FOR EXAMPLE
-    res.end();
-  }, 'projects');
+  //With Scope `items` (look at example of configuration file)
+  imager.upload(req, res, function(err, files, cdnUri, res){
+    console.log({ uri : cdnUri, files : files });
+    res.end()
+  }, 'items')
 });
+```
+
+## REMOVE FILE
+
+```js
+imager.remove('1330838831049.png', function (err) {
+  if (err) throw err
+  console.log('removed')
+}, 'projects')
 ```
 
 ## To-do's
 * Support amazon storage
 * Support filesystem storage
-* Remove using of `eval`
+* <strike>Remove using of `eval`</strike>
 * Add functionality to remove files
 * Add functionality to get the image url
 * Add functionality to get remote images, process the image and then upload to various storage systems

@@ -1,4 +1,13 @@
 
+0.0.4 / 2012-03-04 
+==================
+
+  * add functionality to remove files, other control flow changes
+  * change scope from projects to items
+  * update readme
+  * change description
+  * reduce the usage of eval
+
 0.0.3 / 2012-03-04 
 ==================
 

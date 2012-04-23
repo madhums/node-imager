@@ -1,4 +1,10 @@
 
+0.0.5 / 2012-04-24 
+==================
+
+  * support local file uploads #3, support multiple file uploads #4
+  * rename repo
+
 0.0.4 / 2012-03-04 
 ==================
 

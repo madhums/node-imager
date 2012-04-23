@@ -2,20 +2,22 @@
   "author": "Madhusudhan Srinivasa <madhums8@gmail.com> (http://twitter.com/madhums)",
   "name": "imager",
   "description": "Easy way to resize, crop and upload images to Rackspace cloudfiles",
-  "version": "0.0.4",
-  "keywords": ["upload", "image", "imagemagick", "rackspace", "cloudfiles", "resize", "file"],
+  "version": "0.0.5",
+  "keywords": ["upload", "image", "imagemagick", "rackspace", "cloudfiles", "resize", "file", "crop"],
   "homepage": "https://github.com/madhums/node-imager",
   "repository": {
     "type": "git",
     "url": "git://github.com/madhums/node-imager.git"
   },
+  "main": "index",
   "engines": {
     "node": ">= 0.4.1 < 0.7.0"
   },
   "dependencies": {
     "formidable": "1.0.7",
     "imagemagick": "0.1.2",
-    "cloudfiles": "0.3.3"
+    "cloudfiles": "0.3.3",
+    "mime": "1.2.5"
   },
   "devDependencies": {}
 }

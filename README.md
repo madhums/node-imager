@@ -19,6 +19,11 @@ var imager = new Imager({storage : "rs", config_file: "path/to/imager_config.jso
 ```
 ### Uploading file(s)
 
+The callback recieves an err object, a files array (containing the names of the files which were
+uploaded) and the cdnUri.
+
+So if you have a variant, say `thumb`, then you can access the image by `cdnUri+'/'+'thumb_'+files[0]`. This would be the complete url of the image
+
 1. Form upload
 
   ```js

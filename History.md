@@ -1,4 +1,11 @@
 
+0.0.6 / 2012-05-29 
+==================
+
+  * update documentation
+  * bug fixes, add feature to upload remote images
+  * fixes #1, #2, #3
+
 0.0.5 / 2012-04-24 
 ==================
 

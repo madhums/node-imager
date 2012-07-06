@@ -7,6 +7,7 @@ test:
 		--ui bdd \
 		--timeout 500000 \
 		--growl \
+		 --ignore-leaks \
 		$(TESTS)
 
 .PHONY: test

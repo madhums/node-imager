@@ -17,7 +17,8 @@
     "formidable": "1.0.7",
     "imagemagick": "0.1.2",
     "cloudfiles": "0.3.3",
-    "mime": "1.2.5"
+    "mime": "1.2.5",
+    "async": "0.1.22"
   },
   "devDependencies": {
     "mocha": "1.0.3",

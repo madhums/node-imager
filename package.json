@@ -19,5 +19,11 @@
     "cloudfiles": "0.3.3",
     "mime": "1.2.5"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "mocha": "1.0.3",
+    "should": "0.6.3"
+  },
+  "scripts": {
+    "test": "make test"
+  }
 }

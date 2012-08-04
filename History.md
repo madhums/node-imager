@@ -1,5 +1,20 @@
 
-n.n.n / 2012-06-03 
+0.0.8 / 2012-08-04 
+==================
+
+  * Merge branch 'master' of github.com:madhums/node-imager
+  * return if error
+  * Merge pull request #6 from node-migrator-bot/clean
+  * [fix] path.existsSync was moved to fs.existsSync
+  * ignore leaks for mocha tests
+  * fixtures
+  * tests for single, multiple and remote image uploads
+  * include async
+  * ignore npm-debug.log
+  * add dev dependencies and scripts to run npm test
+  * continue processing, don't return the err
+
+0.0.7 / 2012-06-03 
 ==================
 
   * fixs #5

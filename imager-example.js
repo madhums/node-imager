@@ -26,5 +26,7 @@ module.exports = {
       },
       container: "CONTAINER_NAME"
     }
-  }
+  },
+
+  debug: true
 }

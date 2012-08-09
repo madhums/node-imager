@@ -11,7 +11,7 @@
   },
   "main": "index",
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">= 0.4.1"
   },
   "dependencies": {
     "imagemagick": "0.1.2",

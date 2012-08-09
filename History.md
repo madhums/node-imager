@@ -1,4 +1,12 @@
 
+0.0.9 / 2012-08-09 
+==================
+
+  * imager config example
+  * use async #7 and completely rewrite the module
+  * add async and underscore
+  * using async
+
 0.0.8 / 2012-08-04 
 ==================
 

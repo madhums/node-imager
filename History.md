@@ -1,7 +1,17 @@
 
-0.0.9 / 2012-08-09 
+0.0.9 / 2012-08-10 
 ==================
 
+  * update readme
+  * make remove fn to use the default variant when no variant is provided
+  * support default variant
+  * add debugging options
+  * replace imagemagick with graphicsmagick
+  * remove imagemagick and add graphicsmagick
+  * add back remove functionality
+  * revert node version dependency
+  * remove logs
+  * prepare release 0.0.9
   * imager config example
   * use async #7 and completely rewrite the module
   * add async and underscore

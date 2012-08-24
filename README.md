@@ -8,10 +8,6 @@ A Node.js module to easily resize, crop and upload images (with different varian
 $ npm install imager
 ```
 
-**Note** : _Uptil v0.0.8 the module supported filesystem uploads and external (remote) image uploads, but the module was completely re-written
-to use async and make it much faster. The 0.0.9 version of the module doesn't support file system uploads.
-I will try to add it back soon. You can revert back to older versions if you need filesystem support etc_
-
 ## Usage
 **You need to create imager configuration file with image variants and your storages**
 
@@ -44,6 +40,14 @@ So if you have a variant, say `thumb`, then you can access the image by `cdnUri+
   will try to look for a default variant named `default`. You must either specify a variant like
   above or provide a `default` variant.
 
+2. **Upload local images**
+  ```js
+  imager.upload(['/path/to/file'], function (err, cdnUri, files) {
+    // do your stuff
+  }, 'projects')
+
+  Here files can be an array or a string. Make sure the path is
+  absolute.
 
 ### Removing file(s)
 

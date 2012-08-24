@@ -1,4 +1,12 @@
 
+0.1.0 / 2012-08-24 
+==================
+
+  * allow uploading of local files
+  * bug fix in returning array of files
+  * add license
+  * update readme
+
 0.0.9 / 2012-08-10 
 ==================
 

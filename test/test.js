@@ -1,6 +1,7 @@
 var Imager = require('../index')
   , should = require('should')
-  , imager = new Imager({storage : "rs", config_file: __dirname+"/imager.json"})
+  , imagerConfig = require('./imager')
+  , imager = new Imager(imagerConfig, 'Rackspace')
 
 describe('Imager', function () {
   describe('Single image from disk', function () {
@@ -26,7 +27,7 @@ describe('Imager', function () {
     })
   })
 
-  describe('Single image from remote url', function () {
+  /*describe('Single image from remote url', function () {
     it('should upload to rackspace', function (done) {
       imager.uploadRemoteImage('http://www.google.co.in/images/srpr/logo3w.png', function(err, files, cdnUri){
         files.should.be.a('object')
@@ -35,5 +36,5 @@ describe('Imager', function () {
         done()
       }, 'items')
     })
-  })
+  })*/
 })

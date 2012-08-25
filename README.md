@@ -60,6 +60,8 @@ So if you have a variant, say `thumb`, then you can access the image by `cdnUri+
   }, 'projects')
   ```
 
+  `files` can be array of filenames or a string of single filename.
+
   Even here, if the variant is not specified, imager will try to look for the `default` variant. If neither
   of them are provided, you will get an error.
 
@@ -68,8 +70,7 @@ If you specify `debug: true` in the imager config, you can see the logs of uploa
 
 ## To-do's
 * Support amazon storage
-* Support filesystem storage
-* Write tests
+* Write more tests
 
 
 **credits :** Initially inspired by [Alleup](https://github.com/tih-ra/alleup)

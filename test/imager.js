@@ -7,6 +7,9 @@ module.exports = {
       },
       crop: {
         thumb: "200x200"
+      },
+      resizeAndCrop: {
+        large: {resize: "1000x1000", crop: "900x900"}
       }
     },
 

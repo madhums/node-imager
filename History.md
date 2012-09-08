@@ -1,4 +1,15 @@
 
+0.1.1 / 2012-09-08 
+==================
+
+  * update the example
+  * add resize and crop option
+  * tests for upload and remove
+  * add test imager config
+  * update readme
+  * allow string to be passed to remove
+  * add debug option to display uploaded images
+
 0.1.0 / 2012-08-24 
 ==================
 

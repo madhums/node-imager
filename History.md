@@ -1,4 +1,12 @@
 
+0.1.2 / 2012-09-09 
+==================
+
+  * add resizeAndCrop preset to the test
+  * remove unwanted files
+  * remove resizeAndCropped files
+  * prepare release 0.1.1
+
 0.1.1 / 2012-09-08 
 ==================
 

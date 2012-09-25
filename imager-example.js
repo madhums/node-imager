@@ -28,6 +28,11 @@ module.exports = {
         host: "lon.auth.api.rackspacecloud.com"
       },
       container: "CONTAINER_NAME"
+    },
+    S3: {
+      key: 'API_KEY',
+      secret: 'SECRET',
+      bucket: 'BUCKET_NAME'
     }
   },
 

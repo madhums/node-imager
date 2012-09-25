@@ -1,7 +1,7 @@
 Imager
 =============
 
-A Node.js module to easily resize, crop and upload images (with different variants and presets) to Rackspace cloudfiles.
+A node module to resize, crop and upload images (with different variants and presets) to Rackspace cloudfiles and Amazon S3.
 
 ## Installation
 ```sh
@@ -16,7 +16,7 @@ Checkout the example config file `imager-example.js` in the repo
 ```js
 var Imager = require('imager');
   , imagerConfig = require('path/to/imager-config.js')
-  , imager = new Imager(imagerConfig, 'Rackspace')
+  , imager = new Imager(imagerConfig, 'Rackspace') // or 'S3' for amazon
 ```
 
 ### Uploading file(s)
@@ -69,7 +69,7 @@ So if you have a variant, say `thumb`, then you can access the image by `cdnUri+
 If you specify `debug: true` in the imager config, you can see the logs of uploaded / removed files.
 
 ## To-do's
-* Support amazon storage
+* <strike>Support amazon storage</strike>
 * Write more tests
 
 

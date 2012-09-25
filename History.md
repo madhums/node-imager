@@ -1,4 +1,11 @@
 
+0.1.3 / 2012-09-26 
+==================
+
+  * add S3 upload and remove functionality
+  * update example config with s3 storage
+  * add knox for S3 support
+
 0.1.2 / 2012-09-09 
 ==================
 

@@ -41,6 +41,7 @@ So if you have a variant, say `thumb`, then you can access the image by `cdnUri+
   above or provide a `default` variant.
 
 2. **Upload local images**
+
   ```js
   imager.upload(['/path/to/file'], function (err, cdnUri, files) {
     // do your stuff

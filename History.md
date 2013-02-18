@@ -1,4 +1,12 @@
 
+0.1.5 / 2013-02-18 
+==================
+
+  * use proper logging
+  * remove files after successful upload
+  * refactor code
+  * update readme
+
 0.1.4 / 2012-11-06 
 ==================
 

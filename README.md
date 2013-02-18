@@ -46,6 +46,7 @@ So if you have a variant, say `thumb`, then you can access the image by `cdnUri+
   imager.upload(['/path/to/file'], function (err, cdnUri, files) {
     // do your stuff
   }, 'projects')
+  ```
 
   Here files can be an array or a string. Make sure the path is
   absolute.

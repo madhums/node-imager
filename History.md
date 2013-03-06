@@ -1,4 +1,10 @@
 
+0.1.6 / 2013-03-06 
+==================
+
+  * add missing trailing / for temp directory
+  * use temp directory of the OS
+
 0.1.5 / 2013-02-18 
 ==================
 

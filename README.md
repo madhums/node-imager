@@ -1,5 +1,4 @@
-Imager
-=============
+## Imager
 
 A node module to resize, crop and upload images (with different variants and presets) to Rackspace cloudfiles and Amazon S3.
 
@@ -71,7 +70,6 @@ So if you have a variant, say `thumb`, then you can access the image by `cdnUri+
 If you specify `debug: true` in the imager config, you can see the logs of uploaded / removed files.
 
 ## To-do's
-* <strike>Support amazon storage</strike>
 * Write more tests
 
 

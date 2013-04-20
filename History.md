@@ -1,5 +1,15 @@
 
-n.n.n / 2013-04-20 
+0.1.8 / 2013-04-21 
+==================
+
+  * update dependencies
+  * add missing comma - bug fix
+  * Merge pull request #23 from rubenstolk/patch-3
+  * Can't declare a variable that already exists in context
+  * Merge pull request #22 from rubenstolk/patch-2
+  * Support for both image/jpg and image/jpeg as content type
+
+0.1.7 / 2013-04-20 
 ==================
 
   * refactor. fixes #21

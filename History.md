@@ -1,4 +1,15 @@
 
+n.n.n / 2013-04-20 
+==================
+
+  * refactor. fixes #21
+  * Merge pull request #20 from frekw/master
+  * Bump knox to 0.7 to add support for regions other than US and putFile.
+  * Make sure we don't end up with double trailing slashes. We should also respect the platforms directory separator.
+  * Merge pull request #14 from danielmahon/patch-1
+  * needs to be array
+  * update readme
+
 0.1.6 / 2013-03-06 
 ==================
 

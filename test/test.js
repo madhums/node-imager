@@ -6,6 +6,7 @@
 var Imager = require('../')
   , should = require('should')
   , imagerConfig = require('./imager')
+  , files = [__dirname+'/fixtures/single.jpg', __dirname+'/fixtures/multiple-3.png']
 
 describe('new Imager()', function () {
   it('should throw if no parameters are passed', function () {
@@ -68,6 +69,45 @@ describe('Imager', function () {
       }, 'items')
     })
 
+    describe('With local files', function () {
+      it('should throw if the file paths are incorrect', function () {
+        (function () {
+          var imager = new Imager(imagerConfig, 'Rackspace')
+          imager.upload(['abc.png'], 'items')
+        }).should.throw('ENOENT, no such file or directory \'abc.png\'')
+      })
+
+      it('should throw with incorrect key/secret', function (done) {
+        var imager = new Imager(imagerConfig, 'Rackspace')
+
+        // unset the username
+        imager.config.storage.Rackspace.auth.username = 'xyz123'
+
+        imager.upload(files, function (err, cdnUri, uploaded) {
+          should.exist(err)
+          err.toString().should.equal('Error: Cannot make Rackspace request if not authorized')
+          done()
+        }, 'items')
+      })
+
+      it('should upload the images to the cloud', function (done) {
+        var imager = new Imager(imagerConfig, 'Rackspace')
+        imager.upload(files, function (err, cdnUri, uploaded) {
+          // uncomment this to test
+          // 1. make sure you substitute key/secret in ./imager.js
+          // 2. uncomment the below lines
+
+          /*
+          should.not.exist(err)
+          should.exist(cdnUri)
+          uploaded.should.not.be.empty
+          uploaded.should.have.lengthOf(2)
+          */
+
+          done()
+        }, 'items')
+      })
+    })
   })
 })
 

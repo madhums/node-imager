@@ -11,7 +11,7 @@
   },
   "main": "index",
   "engines": {
-    "node": ">= 0.4.1"
+    "node": ">= 0.8.x"
   },
   "dependencies": {
     "gm": "1.8.2",

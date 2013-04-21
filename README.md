@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/madhums/node-imager.png)](https://travis-ci.org/madhums/node-imager)
+
 ## Imager
 
 A node module to resize, crop and upload images (with different variants and presets) to Rackspace cloudfiles and Amazon S3.

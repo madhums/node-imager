@@ -68,14 +68,14 @@ So if you have a variant, say `thumb`, then you can access the image by `cdnUri+
   Even here, if the variant is not specified, imager will try to look for the `default` variant. If neither
   of them are provided, you will get an error.
 
-## Debugging
+
 If you specify `debug: true` in the imager config, you can see the logs of uploaded / removed files.
 
-## To-do's
-* Write more tests
+## Tests
 
-
-**credits :** Initially inspired by [Alleup](https://github.com/tih-ra/alleup)
+```sh
+$ npm test
+```
 
 ## License
 (The MIT License)

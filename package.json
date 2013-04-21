@@ -26,6 +26,6 @@
     "should": "1.2.2"
   },
   "scripts": {
-    "test": "NODE_ENV=test ./node_modules/.bin/mocha --reporter spec test/test.js"
+    "test": "NODE_ENV=test ./node_modules/.bin/mocha --timeout 500000 --reporter spec test/test.js"
   }
 }

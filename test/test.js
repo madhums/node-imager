@@ -8,6 +8,8 @@ var Imager = require('../')
   , imagerConfig = require('./imager')
   , files = [__dirname+'/fixtures/single.jpg', __dirname+'/fixtures/multiple-3.png']
 
+var file
+
 describe('new Imager()', function () {
   it('should throw if no parameters are passed', function () {
     (function () {
@@ -74,61 +76,116 @@ describe('Imager', function () {
         (function () {
           var imager = new Imager(imagerConfig, 'Rackspace')
           imager.upload(['abc.png'], 'items')
-        }).should.throw('ENOENT, no such file or directory \'abc.png\'')
+        }).should.throw(/ENOENT/)
       })
 
-      it('should throw with incorrect key/secret', function (done) {
-        var imager = new Imager(imagerConfig, 'Rackspace')
-
-        // unset the username
-        imager.config.storage.Rackspace.auth.username = 'xyz123'
-
-        imager.upload(files, function (err, cdnUri, uploaded) {
-          should.exist(err)
-          err.toString().should.equal('Error: Cannot make Rackspace request if not authorized')
-          done()
-        }, 'items')
+      it('should accept path of the file as string', function () {
+        (function () {
+          var imager = new Imager(imagerConfig, 'Rackspace')
+          imager.upload(__dirname+'/fixtures/single.jpg', 'items')
+        }).should.not.throw()
       })
 
-      it('should upload the images to the cloud', function (done) {
-        var imager = new Imager(imagerConfig, 'Rackspace')
-        imager.upload(files, function (err, cdnUri, uploaded) {
-          // uncomment this to test
-          // 1. make sure you substitute key/secret in ./imager.js
-          // 2. uncomment the below lines
+      describe('With invalid username/secret', function () {
+        it('should throw with incorrect key/secret', function (done) {
+          var imager = new Imager(imagerConfig, 'Rackspace')
 
-          /*
+          // unset the username
+          imager.config.storage.Rackspace.auth.username = 'xyz123'
+
+          imager.upload(files, function (err, cdnUri, uploaded) {
+            should.exist(err)
+            err.toString().should.equal('Error: Cannot make Rackspace request if not authorized')
+            done()
+          }, 'items')
+        })
+      })
+
+      describe('With valid username/secret', function () {
+        it('should upload the images to the cloud', function (done) {
+          var imager = new Imager(imagerConfig, 'Rackspace')
+          imager.upload(files, function (err, cdnUri, uploaded) {
+            // uncomment this to test
+            // 1. make sure you substitute key/secret in ./imager.js
+            // 2. uncomment the below lines
+
+            /*
+            should.not.exist(err)
+            should.exist(cdnUri)
+            uploaded.should.not.be.empty
+            uploaded.should.have.lengthOf(2)
+            */
+
+            done()
+          }, 'items')
+        })
+      })
+    })
+
+    describe('With form files', function () {
+      // write tests for form uploads
+    })
+  })
+
+  describe('#remove()', function () {
+    it('should throw if no variant is provided', function () {
+      (function () {
+        var imager = new Imager(imagerConfig, 'Rackspace')
+        imager.remove()
+      }).should.throw('Please specify a proper variant to remove the files')
+    })
+
+    it('should not throw if callback is not provided', function () {
+      (function () {
+        var imager = new Imager(imagerConfig, 'Rackspace')
+        imager.remove([], 'items')
+      }).should.not.throw()
+    })
+
+    it('should throw if the variant is not in the config', function () {
+      (function () {
+        var imager = new Imager(imagerConfig, 'Rackspace')
+        imager.remove([], 'abc')
+      }).should.throw('Please provide a variant which you have specified in the config file')
+    })
+
+    it('should do nothing if the files are not provided', function (done) {
+      var imager = new Imager(imagerConfig, 'Rackspace')
+      imager.remove([], function (err) {
+        should.not.exist(err)
+        done()
+      }, 'items')
+    })
+
+    it('should accept string as a file to remove', function () {
+      (function () {
+        var imager = new Imager(imagerConfig, 'Rackspace')
+        imager.remove('123.jpg', 'items')
+      }).should.not.throw()
+    })
+
+    describe('With a file that does not exist in the cloud', function () {
+      it('should not throw', function () {
+        (function () {
+          var imager = new Imager(imagerConfig, 'Rackspace')
+          imager.remove(['111.jpg'], 'items')
+        }).should.not.throw()
+      })
+    })
+
+    describe('With a file that exists in the cloud', function () {
+      it('should remove the files successfully', function () {
+        var imager = new Imager(imagerConfig, 'Rackspace')
+        // uncomment the below and make sure 123.jpg already exists
+
+        /*
+        imager.remove(['123.jpg'], function (err) {
           should.not.exist(err)
-          should.exist(cdnUri)
-          uploaded.should.not.be.empty
-          uploaded.should.have.lengthOf(2)
-          */
-
           done()
         }, 'items')
+        */
       })
     })
   })
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

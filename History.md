@@ -1,4 +1,14 @@
 
+0.1.9 / 2013-04-22 
+==================
+  
+  * Set the default ACL to 'public-read' for files uploaded to Amazon
+  * add tests
+  * add travis ci
+  * refactor imager for better error handling and flexible syntax
+  * remove makefile, add mocha to npm test
+  * update node engine support - os.tmpDir works only > 0.8.x
+
 0.1.8 / 2013-04-21 
 ==================
 

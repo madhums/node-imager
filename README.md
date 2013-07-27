@@ -41,6 +41,9 @@ So if you have a variant, say `thumb`, then you can access the image by `cdnUri+
   will try to look for a default variant named `default`. You must either specify a variant like
   above or provide a `default` variant.
 
+  If you add an uploadDirectory field to the imager config file as shown in imager-example.js, the files uploaded will go into that specific folder rather than the root of the bucket.
+  If you leave out the uploadDirectory field, uploads will default to the root of the bucket.
+
 2. **Upload local images**
 
   ```js

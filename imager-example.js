@@ -35,7 +35,7 @@ module.exports = {
       bucket: 'BUCKET_NAME',
       storageClass: 'REDUCED_REDUNDANCY'
     },
-    uploadDirectory: 'images/uploads/avatar'
+    uploadDirectory: 'images/uploads/'
   },
 
   debug: true

@@ -7,9 +7,7 @@
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="javascripts/scale.fix.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -19,7 +17,10 @@
       <header>
         <h1>node-imager</h1>
         <p>A node.js module to resize, crop and upload images to Rackspace cloudfiles and Amazon S3</p>
+
         <p class="view"><a href="https://github.com/madhums/node-imager">View the Project on GitHub <small>madhums/node-imager</small></a></p>
+
+
         <ul>
           <li><a href="https://github.com/madhums/node-imager/zipball/master">Download <strong>ZIP File</strong></a></li>
           <li><a href="https://github.com/madhums/node-imager/tarball/master">Download <strong>TAR Ball</strong></a></li>
@@ -27,16 +28,19 @@
         </ul>
       </header>
       <section>
-        <h1>Imager</h1>
+        <h1>
+<a name="imager" class="anchor" href="#imager"><span class="octicon octicon-link"></span></a>Imager</h1>
 
 <p>A node module to resize, crop and upload images (with different variants and presets) to Rackspace cloudfiles and Amazon S3.</p>
 
-<h2>Installation</h2>
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
 
 <div class="highlight"><pre><span class="nv">$ </span>npm install imager
 </pre></div>
 
-<h2>Usage</h2>
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
 
 <p><strong>You need to create imager configuration file with image variants and your storages</strong></p>
 
@@ -47,7 +51,8 @@
   <span class="p">,</span> <span class="nx">imager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Imager</span><span class="p">(</span><span class="nx">imagerConfig</span><span class="p">,</span> <span class="s1">'Rackspace'</span><span class="p">)</span> <span class="c1">// or 'S3' for amazon</span>
 </pre></div>
 
-<h3>Uploading file(s)</h3>
+<h3>
+<a name="uploading-files" class="anchor" href="#uploading-files"><span class="octicon octicon-link"></span></a>Uploading file(s)</h3>
 
 <p>The callback recieves an err object, a files array (containing the names of the files which were
 uploaded) and the cdnUri.</p>
@@ -80,7 +85,8 @@ above or provide a <code>default</code> variant.</p>
 <span class="nx">absolute</span><span class="p">.</span>
 </pre></div>
 </li>
-</ol><h3>Removing file(s)</h3>
+</ol><h3>
+<a name="removing-files" class="anchor" href="#removing-files"><span class="octicon octicon-link"></span></a>Removing file(s)</h3>
 
 <ol>
 <li>
@@ -97,18 +103,21 @@ above or provide a <code>default</code> variant.</p>
 <p>Even here, if the variant is not specified, imager will try to look for the <code>default</code> variant. If neither
 of them are provided, you will get an error.</p>
 </li>
-</ol><h2>Debugging</h2>
+</ol><h2>
+<a name="debugging" class="anchor" href="#debugging"><span class="octicon octicon-link"></span></a>Debugging</h2>
 
 <p>If you specify <code>debug: true</code> in the imager config, you can see the logs of uploaded / removed files.</p>
 
-<h2>To-do's</h2>
+<h2>
+<a name="to-dos" class="anchor" href="#to-dos"><span class="octicon octicon-link"></span></a>To-do's</h2>
 
 <ul>
 <li>Support amazon storage</li>
 <li>Write more tests</li>
 </ul><p><strong>credits :</strong> Initially inspired by <a href="https://github.com/tih-ra/alleup">Alleup</a></p>
 
-<h2>License</h2>
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
 
 <p>(The MIT License)</p>
 
@@ -120,12 +129,12 @@ of them are provided, you will get an error.</p>
 
 <p>THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
       </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/madhums">madhums</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
     </div>
-    <footer>
-      <p>Project maintained by <a href="https://github.com/madhums">madhums</a></p>
-      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
-    </footer>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));

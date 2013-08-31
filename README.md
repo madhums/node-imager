@@ -16,6 +16,7 @@ Checkout the example config file `imager-example.js` in the repo
 
 ```js
 var Imager = require('imager');
+    // See https://github.com/madhums/node-imager/blob/master/imager-example.js for example configuration
   , imagerConfig = require('path/to/imager-config.js')
   , imager = new Imager(imagerConfig, 'Rackspace') // or 'S3' for amazon
 ```
@@ -40,6 +41,10 @@ So if you have a variant, say `thumb`, then you can access the image by `cdnUri+
   Here, `projects` is your scope or variant. If you don't specify the scope or the variant, imager
   will try to look for a default variant named `default`. You must either specify a variant like
   above or provide a `default` variant.
+
+  ONLY WORKS WITH S3
+  If you add an uploadDirectory field to the imager config file as shown in imager-example.js, the files uploaded will go into that specific folder rather than the root of the bucket.
+  If you leave out the uploadDirectory field, uploads will default to the root of the bucket.
 
 2. **Upload local images**
 

@@ -32,8 +32,10 @@ module.exports = {
     S3: {
       key: 'API_KEY',
       secret: 'SECRET',
-      bucket: 'BUCKET_NAME'
-    }
+      bucket: 'BUCKET_NAME',
+      storageClass: 'REDUCED_REDUNDANCY'
+    },
+    uploadDirectory: 'images/uploads/'
   },
 
   debug: true

@@ -1,7 +1,14 @@
 
-0.1.9 / 2013-04-22 
+0.1.10 / 2013-04-22
 ==================
-  
+
+  * "x-amz-storage-class" added to use cheaper S3 hosting if needed
+  * Added upload to folder option
+  * Added functionality to choose a folder within the bucket to which the images are uploaded
+
+0.1.9 / 2013-04-22
+==================
+
   * Set the default ACL to 'public-read' for files uploaded to Amazon
   * add tests
   * add travis ci
@@ -9,7 +16,7 @@
   * remove makefile, add mocha to npm test
   * update node engine support - os.tmpDir works only > 0.8.x
 
-0.1.8 / 2013-04-21 
+0.1.8 / 2013-04-21
 ==================
 
   * update dependencies
@@ -19,7 +26,7 @@
   * Merge pull request #22 from rubenstolk/patch-2
   * Support for both image/jpg and image/jpeg as content type
 
-0.1.7 / 2013-04-20 
+0.1.7 / 2013-04-20
 ==================
 
   * refactor. fixes #21
@@ -30,13 +37,13 @@
   * needs to be array
   * update readme
 
-0.1.6 / 2013-03-06 
+0.1.6 / 2013-03-06
 ==================
 
   * add missing trailing / for temp directory
   * use temp directory of the OS
 
-0.1.5 / 2013-02-18 
+0.1.5 / 2013-02-18
 ==================
 
   * use proper logging
@@ -44,21 +51,21 @@
   * refactor code
   * update readme
 
-0.1.4 / 2012-11-06 
+0.1.4 / 2012-11-06
 ==================
 
   * bump
   * add auto-orient option
   * update readme
 
-0.1.3 / 2012-09-26 
+0.1.3 / 2012-09-26
 ==================
 
   * add S3 upload and remove functionality
   * update example config with s3 storage
   * add knox for S3 support
 
-0.1.2 / 2012-09-09 
+0.1.2 / 2012-09-09
 ==================
 
   * add resizeAndCrop preset to the test
@@ -66,7 +73,7 @@
   * remove resizeAndCropped files
   * prepare release 0.1.1
 
-0.1.1 / 2012-09-08 
+0.1.1 / 2012-09-08
 ==================
 
   * update the example
@@ -77,7 +84,7 @@
   * allow string to be passed to remove
   * add debug option to display uploaded images
 
-0.1.0 / 2012-08-24 
+0.1.0 / 2012-08-24
 ==================
 
   * allow uploading of local files
@@ -85,7 +92,7 @@
   * add license
   * update readme
 
-0.0.9 / 2012-08-10 
+0.0.9 / 2012-08-10
 ==================
 
   * update readme
@@ -103,7 +110,7 @@
   * add async and underscore
   * using async
 
-0.0.8 / 2012-08-04 
+0.0.8 / 2012-08-04
 ==================
 
   * Merge branch 'master' of github.com:madhums/node-imager
@@ -118,27 +125,27 @@
   * add dev dependencies and scripts to run npm test
   * continue processing, don't return the err
 
-0.0.7 / 2012-06-03 
+0.0.7 / 2012-06-03
 ==================
 
   * fixs #5
   * return if error
   * update readme
 
-0.0.6 / 2012-05-29 
+0.0.6 / 2012-05-29
 ==================
 
   * update documentation
   * bug fixes, add feature to upload remote images
   * fixes #1, #2, #3
 
-0.0.5 / 2012-04-24 
+0.0.5 / 2012-04-24
 ==================
 
   * support local file uploads #3, support multiple file uploads #4
   * rename repo
 
-0.0.4 / 2012-03-04 
+0.0.4 / 2012-03-04
 ==================
 
   * add functionality to remove files, other control flow changes
@@ -147,7 +154,7 @@
   * change description
   * reduce the usage of eval
 
-0.0.3 / 2012-03-04 
+0.0.3 / 2012-03-04
 ==================
 
   * prettify code - formatting, indentation

@@ -1,4 +1,9 @@
 
+0.1.11 / 2013-09-10
+==================
+
+  * Only send x-amz-storage-class header if storageClass is set in config
+
 0.1.10 / 2013-04-22
 ==================
 

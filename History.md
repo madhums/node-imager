@@ -1,4 +1,9 @@
 
+0.1.12 / 2013-09-17
+==================
+
+  * Recent changes to express makes content type to be present in file.headers['content-type'] rather file['type']. Also should make sure to support file uploads from local files.
+
 0.1.11 / 2013-09-10
 ==================
 

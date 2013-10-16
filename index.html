@@ -28,15 +28,17 @@
         </ul>
       </header>
       <section>
-        <h1>
-<a name="imager" class="anchor" href="#imager"><span class="octicon octicon-link"></span></a>Imager</h1>
+        <p><a href="https://travis-ci.org/madhums/node-imager"><img src="https://travis-ci.org/madhums/node-imager.png" alt="Build Status"></a></p>
+
+<h2>
+<a name="imager" class="anchor" href="#imager"><span class="octicon octicon-link"></span></a>Imager</h2>
 
 <p>A node module to resize, crop and upload images (with different variants and presets) to Rackspace cloudfiles and Amazon S3.</p>
 
 <h2>
 <a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
 
-<div class="highlight"><pre><span class="nv">$ </span>npm install imager
+<div class="highlight highlight-sh"><pre><span class="nv">$ </span>npm install imager
 </pre></div>
 
 <h2>
@@ -46,7 +48,8 @@
 
 <p>Checkout the example config file <code>imager-example.js</code> in the repo</p>
 
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">Imager</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'imager'</span><span class="p">);</span>
+<div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">Imager</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'imager'</span><span class="p">);</span>
+    <span class="c1">// See https://github.com/madhums/node-imager/blob/master/imager-example.js for example configuration</span>
   <span class="p">,</span> <span class="nx">imagerConfig</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path/to/imager-config.js'</span><span class="p">)</span>
   <span class="p">,</span> <span class="nx">imager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Imager</span><span class="p">(</span><span class="nx">imagerConfig</span><span class="p">,</span> <span class="s1">'Rackspace'</span><span class="p">)</span> <span class="c1">// or 'S3' for amazon</span>
 </pre></div>
@@ -65,7 +68,7 @@ uploaded) and the cdnUri.</p>
 
 <p>If you are using express, you will recieve all the form files in <code>req.files</code>.</p>
 
-<div class="highlight"><pre><span class="nx">imager</span><span class="p">.</span><span class="nx">upload</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">files</span><span class="p">.</span><span class="nx">image</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">cdnUri</span><span class="p">,</span> <span class="nx">files</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight highlight-js"><pre><span class="nx">imager</span><span class="p">.</span><span class="nx">upload</span><span class="p">([</span><span class="nx">req</span><span class="p">.</span><span class="nx">files</span><span class="p">.</span><span class="nx">image</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">cdnUri</span><span class="p">,</span> <span class="nx">files</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// do your stuff</span>
 <span class="p">},</span> <span class="s1">'projects'</span><span class="p">)</span>
 </pre></div>
@@ -73,17 +76,21 @@ uploaded) and the cdnUri.</p>
 <p>Here, <code>projects</code> is your scope or variant. If you don't specify the scope or the variant, imager
 will try to look for a default variant named <code>default</code>. You must either specify a variant like
 above or provide a <code>default</code> variant.</p>
+
+<p>ONLY WORKS WITH S3
+If you add an uploadDirectory field to the imager config file as shown in imager-example.js, the files uploaded will go into that specific folder rather than the root of the bucket.
+If you leave out the uploadDirectory field, uploads will default to the root of the bucket.</p>
 </li>
 <li>
 <p><strong>Upload local images</strong></p>
 
-<div class="highlight"><pre><span class="nx">imager</span><span class="p">.</span><span class="nx">upload</span><span class="p">([</span><span class="s1">'/path/to/file'</span><span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">cdnUri</span><span class="p">,</span> <span class="nx">files</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight highlight-js"><pre><span class="nx">imager</span><span class="p">.</span><span class="nx">upload</span><span class="p">([</span><span class="s1">'/path/to/file'</span><span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">cdnUri</span><span class="p">,</span> <span class="nx">files</span><span class="p">)</span> <span class="p">{</span>
 <span class="c1">// do your stuff</span>
 <span class="p">},</span> <span class="s1">'projects'</span><span class="p">)</span>
-
-<span class="nx">Here</span> <span class="nx">files</span> <span class="nx">can</span> <span class="nx">be</span> <span class="nx">an</span> <span class="nx">array</span> <span class="nx">or</span> <span class="nx">a</span> <span class="nx">string</span><span class="p">.</span> <span class="nx">Make</span> <span class="nx">sure</span> <span class="nx">the</span> <span class="nx">path</span> <span class="nx">is</span>
-<span class="nx">absolute</span><span class="p">.</span>
 </pre></div>
+
+<p>Here files can be an array or a string. Make sure the path is
+absolute.</p>
 </li>
 </ol><h3>
 <a name="removing-files" class="anchor" href="#removing-files"><span class="octicon octicon-link"></span></a>Removing file(s)</h3>
@@ -92,7 +99,7 @@ above or provide a <code>default</code> variant.</p>
 <li>
 <p><strong>Remove from cloudfiles</strong></p>
 
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">files</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'1330838831049.png'</span><span class="p">,</span> <span class="s1">'1330838831049.png'</span><span class="p">]</span>
+<div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">files</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'1330838831049.png'</span><span class="p">,</span> <span class="s1">'1330838831049.png'</span><span class="p">]</span>
 <span class="nx">imager</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">files</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// do your stuff</span>
 <span class="p">},</span> <span class="s1">'projects'</span><span class="p">)</span>
@@ -103,18 +110,13 @@ above or provide a <code>default</code> variant.</p>
 <p>Even here, if the variant is not specified, imager will try to look for the <code>default</code> variant. If neither
 of them are provided, you will get an error.</p>
 </li>
-</ol><h2>
-<a name="debugging" class="anchor" href="#debugging"><span class="octicon octicon-link"></span></a>Debugging</h2>
-
-<p>If you specify <code>debug: true</code> in the imager config, you can see the logs of uploaded / removed files.</p>
+</ol><p>If you specify <code>debug: true</code> in the imager config, you can see the logs of uploaded / removed files.</p>
 
 <h2>
-<a name="to-dos" class="anchor" href="#to-dos"><span class="octicon octicon-link"></span></a>To-do's</h2>
+<a name="tests" class="anchor" href="#tests"><span class="octicon octicon-link"></span></a>Tests</h2>
 
-<ul>
-<li>Support amazon storage</li>
-<li>Write more tests</li>
-</ul><p><strong>credits :</strong> Initially inspired by <a href="https://github.com/tih-ra/alleup">Alleup</a></p>
+<div class="highlight highlight-sh"><pre><span class="nv">$ </span>npm <span class="nb">test</span>
+</pre></div>
 
 <h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>

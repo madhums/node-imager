@@ -24,7 +24,7 @@ module.exports = {
     Rackspace: {
       username: "USERNAME",
       apiKey: "API_KEY",
-      authUrl: "lon.auth.api.rackspacecloud.com"
+      authUrl: "https://lon.auth.api.rackspacecloud.com"
       container: "CONTAINER_NAME",
       region: "REGION_NAME"
     },

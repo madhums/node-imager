@@ -86,6 +86,21 @@ describe('Imager', function () {
         }).should.not.throw()
       })
 
+      it('should save the images to local storage', function (done) {
+        var imager = new Imager(imagerConfig, 'Local')
+        imager.upload(files, function (err, cdnUri, uploaded) {
+
+          should.not.exist(err)
+          uploaded.should.not.be.empty
+          uploaded.should.have.lengthOf(2)
+
+          imager.remove(uploaded, function (err) {
+            should.not.exist(err)
+            done()
+          }, 'items')
+        }, 'items')
+      })
+
       describe('With valid username/secret', function () {
         it('should upload the images to the cloud', function (done) {
           var imager = new Imager(imagerConfig, 'Rackspace')

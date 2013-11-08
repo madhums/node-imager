@@ -1,3 +1,4 @@
+
 module.exports = {
   variants: {
     items: {
@@ -21,6 +22,10 @@ module.exports = {
   },
 
   storage: {
+    Local: {
+      path: require('os').tmpDir(),
+      mode: 0777
+    },
     Rackspace: {
       username: "USERNAME",
       apiKey: "API_KEY",

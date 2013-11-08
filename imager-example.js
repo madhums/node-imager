@@ -22,12 +22,11 @@ module.exports = {
 
   storage: {
     Rackspace: {
-      auth: {
-        username: "USERNAME",
-        apiKey: "API_KEY",
-        host: "lon.auth.api.rackspacecloud.com"
-      },
-      container: "CONTAINER_NAME"
+      username: "USERNAME",
+      apiKey: "API_KEY",
+      authUrl: "lon.auth.api.rackspacecloud.com"
+      container: "CONTAINER_NAME",
+      region: "REGION_NAME"
     },
     S3: {
       key: 'API_KEY',

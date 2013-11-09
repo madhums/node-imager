@@ -35,12 +35,13 @@ describe('new Imager()', function () {
     }).should.throw('Please specify a storage')
   })
 
-  it('given proper config - should create the instance', function () {
-    var imager = new Imager(imagerConfig, 'Rackspace')
+  it('given proper config - should create the instances', function () {
+    var imager = new Imager(imagerConfig, ['Local','Rackspace'])
 
     imager.config.should.have.property('variants')
     imager.config.should.have.property('storage')
-    should.strictEqual('Rackspace', imager.storage)
+    should.strictEqual('Local', imager.storage[0])
+    should.strictEqual('Rackspace', imager.storage[1])
     imager.uploadedFiles.should.be.empty
   })
 })

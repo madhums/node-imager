@@ -21,6 +21,9 @@ module.exports = {
   },
 
   storage: {
+    Local: {
+      path: "/var/www/"
+    },
     Rackspace: {
       username: "USERNAME",
       apiKey: "API_KEY",

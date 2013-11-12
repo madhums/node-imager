@@ -23,7 +23,7 @@ module.exports = {
 
   storage: {
     Local: {
-      path: '.',
+      path: '/tmp',
       mode: 0777
     },
     Rackspace: {

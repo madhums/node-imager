@@ -21,6 +21,9 @@ var Imager = require('imager');
   , imager = new Imager(imagerConfig, 'Rackspace') // or 'S3' for amazon
 ```
 
+If your bucket name contains dot(s) make sure you set `secure: false`, otherwise
+you will run into [this](https://github.com/LearnBoost/knox/issues/125)
+
 ### Uploading file(s)
 
 The callback recieves an err object, a files array (containing the names of the files which were

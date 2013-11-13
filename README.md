@@ -42,10 +42,10 @@ So if you have a variant, say `thumb`, then you can access the image by `cdnUri+
   ```js
   imager.upload([req.files.image], function(err, cdnUri, files) {
       // do your stuff
-  }, 'projects')
+  }, 'items')
   ```
 
-  Here, `projects` is your scope or variant. If you don't specify the scope or the variant, imager
+  Here, `items` is your scope or variant. If you don't specify the scope or the variant, imager
   will try to look for a default variant named `default`. You must either specify a variant like
   above or provide a `default` variant.
 
@@ -58,7 +58,7 @@ So if you have a variant, say `thumb`, then you can access the image by `cdnUri+
   ```js
   imager.upload(['/path/to/file'], function (err, cdnUri, files) {
     // do your stuff
-  }, 'projects')
+  }, 'items')
   ```
 
   Here files can be an array or a string. Make sure the path is
@@ -72,7 +72,7 @@ So if you have a variant, say `thumb`, then you can access the image by `cdnUri+
   var files = ['1330838831049.png', '1330838831049.png']
   imager.remove(files, function (err) {
       // do your stuff
-  }, 'projects')
+  }, 'items')
   ```
 
   `files` can be array of filenames or a string of single filename.

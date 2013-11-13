@@ -4,6 +4,10 @@
 
 A node module to resize, crop and upload images (with different variants and presets) to Rackspace cloudfiles and Amazon S3.
 
+## Requirements
+
+You need to have [ImageMagick](http://www.imagemagick.org/) installed, otherwise you will get weird errors.
+
 ## Installation
 ```sh
 $ npm install imager

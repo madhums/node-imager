@@ -31,6 +31,12 @@ module.exports = {
       apiKey: "API_KEY",
       authUrl: "https://lon.auth.api.rackspacecloud.com",
       container: "CONTAINER_NAME"
+    },
+    S3: {
+      key: 'KEY',
+      secret: 'SECRET',
+      bucket: 'BUCKET'
+      // set `secure: false` if you want to use buckets with characters like .
     }
   },
 

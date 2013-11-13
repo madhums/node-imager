@@ -7,6 +7,9 @@ var Imager = require('../')
   , should = require('should')
   , imagerConfig = require('./imager')
   , files = [__dirname+'/fixtures/single.jpg', __dirname+'/fixtures/multiple-3.png']
+  , request = require('superagent').agent()
+  , express = require('express')
+  , app = express()
 
 var file
 
@@ -124,7 +127,39 @@ describe('Imager', function () {
     })
 
     describe('With form files', function () {
-      // write tests for form uploads
+      before(function (done) {
+        app.use(express.bodyParser())
+        app.post('/upload', function (req, res) {
+          if (imagerConfig.storage.S3.key == 'KEY') return res.send('')
+          var imager = new Imager(imagerConfig, 'S3')
+          imager.upload([req.files.image], function (err, cdnUri, uploaded) {
+            res.json({
+              err: err,
+              cdnUri: cdnUri,
+              uploaded: uploaded
+            })
+          }, 'items')
+        })
+        app.listen(3000)
+        done()
+      })
+
+      it('should upload to S3', function (done) {
+        request
+        .post('http://localhost:3000/upload')
+        .attach('image', __dirname + '/fixtures/single.jpg')
+        .end(function (err, res) {
+          // uncomment the below when you have provided the proper credentials
+          // in `test/imager.js`
+
+          /*should.not.exist(err)
+          should.not.exist(res.body.err)
+          should.exist(res.body.cdnUri)
+          res.body.uploaded.should.not.be.empty
+          res.body.uploaded.should.have.lengthOf(1)*/
+          done()
+        })
+      })
     })
   })
 

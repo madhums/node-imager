@@ -23,9 +23,11 @@
   },
   "devDependencies": {
     "mocha": "1.9.0",
-    "should": "1.2.2"
+    "should": "1.2.2",
+    "express": "3.4.x",
+    "superagent": "0.15.x"
   },
   "scripts": {
-    "test": "NODE_ENV=test ./node_modules/.bin/mocha --timeout 500000 --reporter spec test/test.js"
+    "test": "NODE_ENV=test ./node_modules/.bin/mocha --timeout 50000 --reporter spec test/test.js"
   }
 }

@@ -14,16 +14,16 @@
     "node": ">= 0.8.x"
   },
   "dependencies": {
-    "gm": "1.8.2",
+    "gm": "1.13.x",
     "pkgcloud": "0.8.x",
-    "knox": "0.7.x",
-    "mime": "1.2.9",
-    "async": "0.2.7",
-    "underscore": "1.4.4"
+    "knox": "0.8.x",
+    "mime": "1.2.x",
+    "async": "0.2.x",
+    "underscore": "1.5.x"
   },
   "devDependencies": {
-    "mocha": "1.9.0",
-    "should": "1.2.2",
+    "mocha": "1.14.x",
+    "should": "2.1.x",
     "express": "3.4.x",
     "superagent": "0.15.x"
   },

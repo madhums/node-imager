@@ -25,13 +25,6 @@ var Imager = require('imager');
   , imager = new Imager(imagerConfig, 'Rackspace') // or 'S3' for amazon
 ```
 
-#### Notes
-
-1. If your bucket name contains dot(s) make sure you set `secure: false`, otherwise
-you will run into [this](https://github.com/LearnBoost/knox/issues/125).
-2. Setting the `keepNames: true` for the variant retains the name of the uploaded file.
-(check the example imager config)
-
 ### Uploading file(s)
 
 The callback recieves an err object, a files array (containing the names of the files which were
@@ -70,22 +63,25 @@ So if you have a variant, say `thumb`, then you can access the image by `cdnUri+
 
 ### Removing file(s)
 
-1. **Remove from cloudfiles**
+```js
+var files = ['1330838831049.png', '1330838831049.png']
+imager.remove(files, function (err) {
+  // do your stuff
+}, 'items')
+```
 
-  ```js
-  var files = ['1330838831049.png', '1330838831049.png']
-  imager.remove(files, function (err) {
-      // do your stuff
-  }, 'items')
-  ```
+`files` can be array of filenames or a string of single filename.
 
-  `files` can be array of filenames or a string of single filename.
+Even here, if the variant is not specified, imager will try to look for the `default` variant. If neither
+of them are provided, you will get an error.
 
-  Even here, if the variant is not specified, imager will try to look for the `default` variant. If neither
-  of them are provided, you will get an error.
+### Gotchas
 
-
-If you specify `debug: true` in the imager config, you can see the logs of uploaded / removed files.
+1. If your bucket name contains dot(s) make sure you set `secure: false`, otherwise
+you will run into [this](https://github.com/LearnBoost/knox/issues/125).
+2. Setting the `keepNames: true` for the variant retains the name of the uploaded file.
+(check the example imager config)
+3. If you specify `debug: true` in the imager config, you can see the logs of uploaded / removed files.
 
 ## Tests
 

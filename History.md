@@ -1,4 +1,14 @@
 
+0.2.0 / 2013-11-14
+==================
+
+  * Updated dependencies
+  * Use pkgcloud instead of cloudfiles
+  * Added `keepNames` config to retain names of the images
+  * Updated examples
+  * Added express example
+  * Added more tests
+
 0.1.12 / 2013-09-17
 ==================
 

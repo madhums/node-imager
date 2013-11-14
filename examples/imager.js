@@ -2,6 +2,7 @@
 module.exports = {
   variants: {
     items: {
+      // keepNames: true,
       resize: {
         mini : "300x200",
         preview: "800x600"
@@ -29,8 +30,8 @@ module.exports = {
     Rackspace: {
       username: "USERNAME",
       apiKey: "API_KEY",
-      authUrl: "https://lon.auth.api.rackspacecloud.com",
-      container: "CONTAINER_NAME"
+      // authUrl: "https://lon.auth.api.rackspacecloud.com",
+      container: "CONTAINER"
     },
     S3: {
       key: 'KEY',

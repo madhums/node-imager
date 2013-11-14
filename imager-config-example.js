@@ -1,6 +1,7 @@
 module.exports = {
   variants: {
     items: {
+      // keepNames: true,
       resize: {
         mini : "300x200",
         preview: "800x600"

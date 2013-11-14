@@ -6,7 +6,7 @@ var Imager = require('../')
 
 app.use(express.bodyParser())
 app.post('/', function (req, res) {
-  var imager = new Imager(config, 'S3')
+  var imager = new Imager(config, 'Rackspace') // 'Rackspace' or 'S3'
   imager.upload([req.files.image], function (err, cdnUri, uploaded) {
     if (err) return res.send(err.toString())
     res.send(JSON.stringify({

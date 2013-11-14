@@ -16,17 +16,21 @@ $ npm install imager
 ## Usage
 **You need to create imager configuration file with image variants and your storages**
 
-Checkout the example config file `imager-example.js` in the repo
+Checkout the example config file `imager-config-example.js` in the repo
 
 ```js
 var Imager = require('imager');
-    // See https://github.com/madhums/node-imager/blob/master/imager-example.js for example configuration
+    // See https://github.com/madhums/node-imager/blob/master/imager-config-example.js for example configuration
   , imagerConfig = require('path/to/imager-config.js')
   , imager = new Imager(imagerConfig, 'Rackspace') // or 'S3' for amazon
 ```
 
-If your bucket name contains dot(s) make sure you set `secure: false`, otherwise
-you will run into [this](https://github.com/LearnBoost/knox/issues/125)
+#### Notes
+
+1. If your bucket name contains dot(s) make sure you set `secure: false`, otherwise
+you will run into [this](https://github.com/LearnBoost/knox/issues/125).
+2. Setting the `keepNames: true` for the variant retains the name of the uploaded file.
+(check the example imager config)
 
 ### Uploading file(s)
 
@@ -50,7 +54,7 @@ So if you have a variant, say `thumb`, then you can access the image by `cdnUri+
   above or provide a `default` variant.
 
   ONLY WORKS WITH S3
-  If you add an uploadDirectory field to the imager config file as shown in imager-example.js, the files uploaded will go into that specific folder rather than the root of the bucket.
+  If you add an uploadDirectory field to the imager config file as shown in imager-config-example.js, the files uploaded will go into that specific folder rather than the root of the bucket.
   If you leave out the uploadDirectory field, uploads will default to the root of the bucket.
 
 2. **Upload local images**

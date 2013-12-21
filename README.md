@@ -79,8 +79,7 @@ of them are provided, you will get an error.
 
 1. If your bucket name contains dot(s) make sure you set `secure: false`, otherwise
 you will run into [this](https://github.com/LearnBoost/knox/issues/125).
-2. Setting the `keepNames: true` for the variant retains the name of the uploaded file.
-(check the example imager config)
+2. Setting the `keepNames: true` for the variant retains the name of the uploaded file; otherwise you can set your custom rename function for each variant (check the example imager config)
 3. If you specify `debug: true` in the imager config, you can see the logs of uploaded / removed files.
 
 ## Tests

@@ -90,6 +90,29 @@ describe('Imager', function () {
         }).should.not.throw()
       })
 
+      it('with custom rename function', function (done) {
+        (function () {
+          var imager = new Imager(imagerConfig, 'Rackspace')
+          imager.upload(__dirname+'/fixtures/single.jpg', function (err, cdnUri, uploaded) {
+            // uncomment this to test
+            // 1. make sure you substitute key/secret in ./imager.js
+            // 2. uncomment the below lines
+
+            /*
+            should.not.exist(err)
+            should.exist(cdnUri)
+            uploaded.should.not.be.empty
+            uploaded.should.have.lengthOf(1)
+            uploaded[0].should.equal('MyFilenameManipulation_single.jpg');
+            */
+
+            done()
+          }, 'gallery')
+        }).should.not.throw()
+      })
+
+
+
       describe('With valid username/secret', function () {
         it('should upload the images to the cloud', function (done) {
           var imager = new Imager(imagerConfig, 'Rackspace')

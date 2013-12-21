@@ -16,6 +16,9 @@ module.exports = {
     },
 
     gallery: {
+      rename: function (filename) {
+        return 'MyFilenameManipulation_' + filename;
+      },
       crop: {
         thumb: "100x100"
       }

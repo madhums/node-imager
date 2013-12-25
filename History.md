@@ -1,4 +1,9 @@
 
+0.2.1 / 2013-12-25
+=================
+
+  * Add custom rename method for files in the imager config
+
 0.2.0 / 2013-11-14
 ==================
 

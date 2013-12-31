@@ -5,5 +5,5 @@
 3. Then run
 
   ```sh
-  $ node index.js
+  $ node server.js
   ```

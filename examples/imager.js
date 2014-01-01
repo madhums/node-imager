@@ -39,8 +39,10 @@ module.exports = {
     S3: {
       key: 'KEY',
       secret: 'SECRET',
-      bucket: 'BUCKET'
-      // set `secure: false` if you want to use buckets with characters like .
+      bucket: 'BUCKET',
+      cdn: 'http://CDN_URL', // (optional)
+      storageClass: 'REDUCED_REDUNDANCY' // (optional)
+      // set `secure: false` if you want to use buckets with characters like '.' (dot)
     }
   },
 

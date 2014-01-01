@@ -81,6 +81,13 @@ of them are provided, you will get an error.
 you will run into [this](https://github.com/LearnBoost/knox/issues/125).
 2. Setting the `keepNames: true` for the variant retains the name of the uploaded file; otherwise you can set your custom rename function for each variant (check the example imager config)
 3. If you specify `debug: true` in the imager config, you can see the logs of uploaded / removed files.
+4. If you want to upload the original image, use 
+
+    ```
+    resize: {
+        original: "100%"
+    }
+    ```
 
 ## Tests
 

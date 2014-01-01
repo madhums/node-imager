@@ -1,5 +1,5 @@
 {
-  "author": "Madhusudhan Srinivasa <madhums8@gmail.com> (http://madhums.github.com/)",
+  "author": "Madhusudhan Srinivasa <me@madhums.me> (http://madhums.me/)",
   "name": "imager",
   "description": "Easy way to resize, crop and upload images to Rackspace cloudfiles and Amazon S3",
   "version": "0.2.2",

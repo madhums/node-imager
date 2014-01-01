@@ -39,8 +39,9 @@ module.exports = {
       key: 'API_KEY',
       secret: 'SECRET',
       bucket: 'BUCKET_NAME',
-      storageClass: 'REDUCED_REDUNDANCY'
-      // if your BUCKET_NAME contains dot(s) make sure you set `secure: false`
+      storageClass: 'REDUCED_REDUNDANCY',
+      secure: false, // (optional) if your BUCKET_NAME contains dot(s), set this to false. Default is `true`
+      cdn: 'CDN_URL' // (optional) if you want to use Amazon cloudfront cdn, enter the cdn url here
     },
     uploadDirectory: 'images/uploads/'
   },

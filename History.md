@@ -1,4 +1,9 @@
 
+0.2.3 / 2014-01-01
+=================
+
+  * Support cloudfront cdn. Add `cdn` config for s3 uploads
+
 0.2.2 / 2013-12-31
 =================
 

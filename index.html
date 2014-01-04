@@ -1,39 +1,44 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>node-imager by madhums</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
+    <title>node-imager by madhums</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
+    <header>
+      <div class="inner">
         <h1>node-imager</h1>
-        <p>A node.js module to resize, crop and upload images to Rackspace cloudfiles and Amazon S3</p>
+        <h2>A node.js module to resize, crop and upload images to Rackspace cloudfiles and Amazon S3</h2>
+        <a href="https://github.com/madhums/node-imager" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
 
-        <p class="view"><a href="https://github.com/madhums/node-imager">View the Project on GitHub <small>madhums/node-imager</small></a></p>
-
-
-        <ul>
-          <li><a href="https://github.com/madhums/node-imager/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/madhums/node-imager/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/madhums/node-imager">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <p><a href="https://travis-ci.org/madhums/node-imager"><img src="https://travis-ci.org/madhums/node-imager.png" alt="Build Status"></a></p>
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <p><a href="https://travis-ci.org/madhums/node-imager"><img src="https://travis-ci.org/madhums/node-imager.png" alt="Build Status"></a></p>
 
 <h2>
 <a name="imager" class="anchor" href="#imager"><span class="octicon octicon-link"></span></a>Imager</h2>
 
 <p>A node module to resize, crop and upload images (with different variants and presets) to Rackspace cloudfiles and Amazon S3.</p>
+
+<h2>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<p>You need to have <a href="http://www.imagemagick.org/">ImageMagick</a> installed, otherwise you will get weird errors.</p>
 
 <h2>
 <a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
@@ -46,10 +51,10 @@
 
 <p><strong>You need to create imager configuration file with image variants and your storages</strong></p>
 
-<p>Checkout the example config file <code>imager-example.js</code> in the repo</p>
+<p>Checkout the example config file <code>imager-config-example.js</code> in the repo</p>
 
 <div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">Imager</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'imager'</span><span class="p">);</span>
-    <span class="c1">// See https://github.com/madhums/node-imager/blob/master/imager-example.js for example configuration</span>
+    <span class="c1">// See https://github.com/madhums/node-imager/blob/master/imager-config-example.js for example configuration</span>
   <span class="p">,</span> <span class="nx">imagerConfig</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path/to/imager-config.js'</span><span class="p">)</span>
   <span class="p">,</span> <span class="nx">imager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Imager</span><span class="p">(</span><span class="nx">imagerConfig</span><span class="p">,</span> <span class="s1">'Rackspace'</span><span class="p">)</span> <span class="c1">// or 'S3' for amazon</span>
 </pre></div>
@@ -69,24 +74,24 @@ uploaded) and the cdnUri.</p>
 <p>If you are using express, you will recieve all the form files in <code>req.files</code>.</p>
 
 <div class="highlight highlight-js"><pre><span class="nx">imager</span><span class="p">.</span><span class="nx">upload</span><span class="p">([</span><span class="nx">req</span><span class="p">.</span><span class="nx">files</span><span class="p">.</span><span class="nx">image</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">cdnUri</span><span class="p">,</span> <span class="nx">files</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// do your stuff</span>
-<span class="p">},</span> <span class="s1">'projects'</span><span class="p">)</span>
+    <span class="c1">// do your stuff</span>
+<span class="p">},</span> <span class="s1">'items'</span><span class="p">)</span>
 </pre></div>
 
-<p>Here, <code>projects</code> is your scope or variant. If you don't specify the scope or the variant, imager
+<p>Here, <code>items</code> is your scope or variant. If you don't specify the scope or the variant, imager
 will try to look for a default variant named <code>default</code>. You must either specify a variant like
 above or provide a <code>default</code> variant.</p>
 
 <p>ONLY WORKS WITH S3
-If you add an uploadDirectory field to the imager config file as shown in imager-example.js, the files uploaded will go into that specific folder rather than the root of the bucket.
+If you add an uploadDirectory field to the imager config file as shown in imager-config-example.js, the files uploaded will go into that specific folder rather than the root of the bucket.
 If you leave out the uploadDirectory field, uploads will default to the root of the bucket.</p>
 </li>
 <li>
 <p><strong>Upload local images</strong></p>
 
 <div class="highlight highlight-js"><pre><span class="nx">imager</span><span class="p">.</span><span class="nx">upload</span><span class="p">([</span><span class="s1">'/path/to/file'</span><span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">cdnUri</span><span class="p">,</span> <span class="nx">files</span><span class="p">)</span> <span class="p">{</span>
-<span class="c1">// do your stuff</span>
-<span class="p">},</span> <span class="s1">'projects'</span><span class="p">)</span>
+  <span class="c1">// do your stuff</span>
+<span class="p">},</span> <span class="s1">'items'</span><span class="p">)</span>
 </pre></div>
 
 <p>Here files can be an array or a string. Make sure the path is
@@ -95,24 +100,34 @@ absolute.</p>
 </ol><h3>
 <a name="removing-files" class="anchor" href="#removing-files"><span class="octicon octicon-link"></span></a>Removing file(s)</h3>
 
-<ol>
-<li>
-<p><strong>Remove from cloudfiles</strong></p>
-
 <div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">files</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'1330838831049.png'</span><span class="p">,</span> <span class="s1">'1330838831049.png'</span><span class="p">]</span>
 <span class="nx">imager</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">files</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// do your stuff</span>
-<span class="p">},</span> <span class="s1">'projects'</span><span class="p">)</span>
+<span class="p">},</span> <span class="s1">'items'</span><span class="p">)</span>
 </pre></div>
 
 <p><code>files</code> can be array of filenames or a string of single filename.</p>
 
 <p>Even here, if the variant is not specified, imager will try to look for the <code>default</code> variant. If neither
 of them are provided, you will get an error.</p>
-</li>
-</ol><p>If you specify <code>debug: true</code> in the imager config, you can see the logs of uploaded / removed files.</p>
 
-<h2>
+<h3>
+<a name="gotchas" class="anchor" href="#gotchas"><span class="octicon octicon-link"></span></a>Gotchas</h3>
+
+<ol>
+<li>If your bucket name contains dot(s) make sure you set <code>secure: false</code>, otherwise
+you will run into <a href="https://github.com/LearnBoost/knox/issues/125">this</a>.</li>
+<li>Setting the <code>keepNames: true</code> for the variant retains the name of the uploaded file; otherwise you can set your custom rename function for each variant (check the example imager config)</li>
+<li>If you specify <code>debug: true</code> in the imager config, you can see the logs of uploaded / removed files.</li>
+<li>
+<p>If you want to upload the original image, use </p>
+
+<pre><code>resize: {
+    original: "100%"
+}
+</code></pre>
+</li>
+</ol><h2>
 <a name="tests" class="anchor" href="#tests"><span class="octicon octicon-link"></span></a>Tests</h2>
 
 <div class="highlight highlight-sh"><pre><span class="nv">$ </span>npm <span class="nb">test</span>
@@ -130,14 +145,26 @@ of them are provided, you will get an error.</p>
 <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
 
 <p>THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/madhums">madhums</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/madhums/node-imager/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/madhums/node-imager/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/madhums/node-imager"></a> is maintained by <a href="https://github.com/madhums">madhums</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
-              <script type="text/javascript">
+
+            <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>

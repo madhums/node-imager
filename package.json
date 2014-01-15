@@ -19,7 +19,7 @@
     "knox": "0.8.x",
     "mime": "1.2.x",
     "async": "0.2.x",
-    "underscore": "1.5.x"
+    "lodash": "2.4.1"
   },
   "devDependencies": {
     "mocha": "1.14.x",

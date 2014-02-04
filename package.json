@@ -2,7 +2,7 @@
   "author": "Madhusudhan Srinivasa <me@madhums.me> (http://madhums.me/)",
   "name": "imager",
   "description": "Easy way to resize, crop and upload images to Rackspace cloudfiles and Amazon S3",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "keywords": ["upload", "image", "graphicsmagick", "imagemagick", "rackspace", "cloudfiles", "resize", "file", "crop", "amazon", "s3"],
   "homepage": "https://github.com/madhums/node-imager",
   "repository": {

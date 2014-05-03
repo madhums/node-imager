@@ -7,7 +7,10 @@ module.exports = {
         preview: "800x600"
       },
       crop: {
-        thumb: "200x200"
+        thumb: "200x200",
+        // Sets the crop position, or "gravity". Default is NorthWest.
+        // See http://www.graphicsmagick.org/GraphicsMagick.html#details-gravity for details
+        thumb_center: "200x200 Center"
       },
       resizeAndCrop: {
         large: {resize: "1000x1000", crop: "900x900"}

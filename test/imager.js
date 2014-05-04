@@ -2,16 +2,24 @@
 module.exports = {
   variants: {
     items: {
-      // keepNames: true,
-      resize: {
-        mini : "300x200",
-        preview: "800x600"
+      rename: function (filename) {
+        return Date.now() + '_' + filename;
       },
-      crop: {
-        thumb: "200x200"
+      thumbnail: {
+        mini_thumb_center: "160x160",
+        medium_thumb_center: "360x360",
+        mini_thumb: "160x160 NorthWest",
+        medium_thumb: "360x360 NorthWest"
+      },
+      resize: {
+        original : "100%",
+        mini : "160x160",
+        medium : "360x360",
+        large : "640x640"
       },
       resizeAndCrop: {
-        large: {resize: "1000x1000", crop: "900x900"}
+        // mini_thumb : {crop: "160x160", resize: "480x480"},
+        // medium_thumb : {crop: "360x360", resize: "1080x1080"}
       }
     },
 

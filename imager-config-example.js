@@ -14,6 +14,12 @@ module.exports = {
       },
       resizeAndCrop: {
         large: {resize: "1000x1000", crop: "900x900"}
+      },
+      thumbnail: {
+        // "Cuts the thumbnail to fit"
+        // See http://superuser.com/questions/275476/square-thumbnails-with-imagemagick-convert
+        better_thumb: "100x100 NorthWest",
+        better_thumb_center: "100x100 Center"
       }
     },
 

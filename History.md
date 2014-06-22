@@ -1,3 +1,14 @@
+0.2.5 / 2014-06-22
+=================
+
+  * Add thumbnail option
+  * Add support for multer
+  * Remove thumbnail images when deleting from cloud storages
+
+0.2.4 / 2014-02-04
+=================
+
+  * Use lodash instead and ditch underscore 
 
 0.2.3 / 2014-01-01
 =================

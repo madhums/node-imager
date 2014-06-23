@@ -1,3 +1,8 @@
+0.2.6 / 2014-06-23
+=================
+
+  * Fix type of file (returned from multer)
+
 0.2.5 / 2014-06-22
 =================
 
@@ -8,7 +13,7 @@
 0.2.4 / 2014-02-04
 =================
 
-  * Use lodash instead and ditch underscore 
+  * Use lodash instead and ditch underscore
 
 0.2.3 / 2014-01-01
 =================

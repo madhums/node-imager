@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/madhums/node-imager.png)](https://travis-ci.org/madhums/node-imager)
+[![Build Status](https://travis-ci.org/imagerjs/imager.png)](https://travis-ci.org/imagerjs/imager)
 
 ## Imager
 

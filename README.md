@@ -77,18 +77,13 @@ var imager = new Imager(variants.item, ...);
 ```js
 var config = require('./imager-config.js');
 var imager = new Imager(config.variants.item, config.storage);
-imager.upload(files, function (err, uploaded) {
-  // user.avatar = uploaded;
-})
-```
-
-the uploaded object
-
-```js
-{
-  thumb: [ 'https://fudge.s3.amazonaws.com/user/1/thumb/image-1.png', ... ],
-  large: [ 'https://fudge.s3.amazonaws.com/user/1/large/image-2.jpg', ... ]
-}
+imager.upload(files, function (err, avatar) {
+  // avatar =>
+  // {
+  //   thumb: [ 'https://fudge.s3.amazonaws.com/user/1/thumb/image-1.png', ],
+  //   large: [ 'https://fudge.s3.amazonaws.com/user/1/large/image-1.png', ]
+  // }
+});
 ```
 
 ### .remove()

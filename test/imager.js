@@ -3,17 +3,23 @@
 // for preset options
 
 exports.variants = {
+  // variant
   item: {
+    // preset
     thumb: {
-      pool: 5,
-      scale: { width: 200, height: 150, type: 'contain' },
-      crop: { width: 200, height: 150, x: 0, y: 0 },
-      format: 'png',
-      rotate: 'auto',
+      // preset options
+      options: {
+        pool: 5,
+        scale: { width: 200, height: 150, type: 'contain' },
+        crop: { width: 200, height: 150, x: 0, y: 0 },
+        format: 'png',
+        rotate: 'auto',
+      },
       rename: function (file, preset) {
         return '/users/1/' + preset + '/' + file.name;
       }
     },
+    // preset
     large: {
       pool: 5,
       scale: { width: 800, height: 600, type: 'contain' },

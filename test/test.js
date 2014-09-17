@@ -16,7 +16,6 @@ describe('Imager', function () {
   it('should run', function (done) {
     var imager = new Imager(config.variants, config.storages.amazon);
     imager.upload(files, 'item', function (err, _files) {
-      console.log(err);
       console.log(_files);
       done(err);
     });

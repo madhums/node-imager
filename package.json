@@ -21,7 +21,7 @@
     "type": "git",
     "url": "git://github.com/imagerjs/imager.git"
   },
-  "main": "index",
+  "main": "./lib/imager",
   "engines": {
     "node": ">= 0.11.12"
   },
@@ -40,6 +40,6 @@
     "superagent": "0.18.2"
   },
   "scripts": {
-    "test": "NODE_ENV=test mocha --harmony --timeout 50000 test/test.js"
+    "test": "NODE_ENV=test mocha --harmony --timeout 5000 test/test.js"
   }
 }

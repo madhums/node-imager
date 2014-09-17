@@ -1,48 +1,46 @@
 
-module.exports = {
-  variants: {
-    items: {
-      // keepNames: true,
-      resize: {
-        mini : "300x200",
-        preview: "800x600"
-      },
-      crop: {
-        thumb: "200x200"
-      },
-      resizeAndCrop: {
-        large: {resize: "1000x1000", crop: "900x900"}
+// Checkout https://github.com/e-conomic/graphicsmagick-stream
+// for preset options
+
+exports.variants = {
+  item: {
+    thumb: {
+      pool: 5,
+      scale: { width: 200, height: 150, type: 'contain' },
+      crop: { width: 200, height: 150, x: 0, y: 0 },
+      format: 'png',
+      rotate: 'auto',
+      rename: function (file, preset) {
+        return '/users/1/' + preset + '/' + file.name;
       }
     },
-
-    gallery: {
-      rename: function (filename) {
-        return 'MyFilenameManipulation_' + filename;
-      },
-      crop: {
-        thumb: "100x100"
-      }
+    large: {
+      pool: 5,
+      scale: { width: 800, height: 600, type: 'contain' },
+      crop: { width: 800, height: 600, x: 0, y: 0 },
+      format: 'png',
+      rotate: 'auto'
     }
-  },
+  }
+};
 
-  storage: {
-    Local: {
-      path: '/tmp',
-      mode: 0777
-    },
-    Rackspace: {
-      username: "USERNAME",
-      apiKey: "API_KEY",
-      authUrl: "https://lon.auth.api.rackspacecloud.com",
-      container: "CONTAINER_NAME"
-    },
-    S3: {
-      key: 'KEY',
-      secret: 'SECRET',
-      bucket: 'BUCKET'
-      // set `secure: false` if you want to use buckets with characters like .
-    }
+exports.storages = {
+  local: {
+    provider: 'local',
+    path: '/tmp',
+    mode: 0777
   },
-
-  debug: false
+  rackspace: {
+    provider: 'rackspace',
+    username: process.env.IMAGER_RACKSPACE_USERNAME,
+    apiKey: process.env.IMAGER_RACKSPACE_KEY,
+    authUrl: 'https://lon.auth.api.rackspacecloud.com',
+    container: process.env.IMAGER_RACKSPACE_CONTAINER
+  },
+  amazon: {
+    provider: 'amazon',
+    key: process.env.IMAGER_S3_KEY,
+    keyId: process.env.IMAGER_S3_KEYID,
+    container: process.env.IMAGER_S3_BUCKET
+  }
 }

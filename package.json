@@ -2,7 +2,7 @@
   "author": "Madhusudhan Srinivasa <me@madhums.me> (http://madhums.me/)",
   "name": "imager",
   "description": "Easy way to resize, crop and upload images to Rackspace cloudfiles and Amazon S3",
-  "version": "0.4.0",
+  "version": "1.0.0-alpha1",
   "keywords": [
     "upload",
     "image",
@@ -16,30 +16,30 @@
     "amazon",
     "s3"
   ],
-  "homepage": "https://github.com/madhums/node-imager",
+  "homepage": "https://github.com/imagerjs/imager",
   "repository": {
     "type": "git",
-    "url": "git://github.com/madhums/node-imager.git"
+    "url": "git://github.com/imagerjs/imager.git"
   },
   "main": "index",
   "engines": {
-    "node": ">= 0.10.x"
+    "node": ">= 0.11.12"
   },
   "dependencies": {
-    "async": "0.9.0",
-    "gm": "1.16.0",
-    "knox": "0.9.1",
-    "lodash": "2.4.1",
+    "graphicsmagick-stream": "2.0.1",
+    "pkgcloud": "0.9.6",
     "mime": "1.2.11",
-    "pkgcloud": "0.9.6"
+    "debug": "2.0.0",
+    "async": "0.9.0",
+    "co": "3.1.0"
   },
   "devDependencies": {
     "mocha": "1.21.4",
     "should": "4.0.4",
-    "express": "3.x",
+    "express": "4.9.0",
     "superagent": "0.18.2"
   },
   "scripts": {
-    "test": "NODE_ENV=test ./node_modules/.bin/mocha --timeout 50000 --reporter spec test/test.js"
+    "test": "NODE_ENV=test mocha --harmony --timeout 50000 test/test.js"
   }
 }

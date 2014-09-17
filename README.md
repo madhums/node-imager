@@ -2,6 +2,8 @@
 [![Gittip](https://img.shields.io/gratipay/madhums.svg?style=flat)](https://www.gratipay.com/madhums/)
 [![Dependencies](https://img.shields.io/david/imagerjs/imager.svg?style=flat)](https://david-dm.org/imagerjs/imager)
 
+**wip**: This is work in progress. Converting to use generators and [graphicsmagick-stream](https://github.com/e-conomic/graphicsmagick-stream) library. Everything is streamed.
+
 ## Imager
 
 A node module to resize, crop and upload images (with different variants and presets) to Rackspace cloudfiles and Amazon S3.
@@ -83,7 +85,7 @@ of them are provided, you will get an error.
 you will run into [this](https://github.com/LearnBoost/knox/issues/125).
 2. Setting the `keepNames: true` for the variant retains the name of the uploaded file; otherwise you can set your custom rename function for each variant (check the example imager config)
 3. If you specify `debug: true` in the imager config, you can see the logs of uploaded / removed files.
-4. If you want to upload the original image, use 
+4. If you want to upload the original image, use
 
     ```
     resize: {

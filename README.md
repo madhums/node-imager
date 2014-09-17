@@ -72,14 +72,23 @@ var imager = new Imager(variants.item, ...);
 
 ### .upload(files, callback)
 
-`files` is an array of files or a single file. A file can be a file object, absolute file path pointing a local file or base64 encoded image data. `callback` accepts `err` and uploaded files `array`
+`files` is an array of files or a single file. A file can be a file object, absolute file path pointing a local file or base64 encoded image data. `callback` accepts `err` and an object containing the array of uploaded images.
 
 ```js
 var config = require('./imager-config.js');
 var imager = new Imager(config.variants.item, config.storage);
 imager.upload(files, function (err, uploaded) {
-  // do something
+  // user.avatar = uploaded;
 })
+```
+
+the uploaded object
+
+```js
+{
+  thumb: [ 'https://fudge.s3.amazonaws.com/user/1/thumb/image-1.png', ... ],
+  large: [ 'https://fudge.s3.amazonaws.com/user/1/large/image-2.jpg', ... ]
+}
 ```
 
 ### .remove()

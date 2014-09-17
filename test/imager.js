@@ -16,7 +16,8 @@ exports.variants = {
         rotate: 'auto',
       },
       rename: function (file, preset) {
-        return 'users/1/' + preset + '/' + file.name;
+        return;
+        // return 'users/1/' + preset + '/' + file.name;
       }
     },
     // preset

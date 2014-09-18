@@ -1,4 +1,6 @@
-[![Build Status](https://travis-ci.org/imagerjs/imager.svg?branch=master)](https://travis-ci.org/imagerjs/imager)
+[![Build Status](https://img.shields.io/travis/imagerjs/imager/master.svg?style=flat)](https://travis-ci.org/imagerjs/imager)
+[![Gittip](https://img.shields.io/gratipay/madhums.svg?style=flat)](https://www.gratipay.com/madhums/)
+[![Dependencies](https://img.shields.io/david/imagerjs/imager.svg?style=flat)](https://david-dm.org/imagerjs/imager)
 
 ## Imager
 

@@ -1,4 +1,6 @@
-[![Build Status](https://travis-ci.org/imagerjs/imager.png)](https://travis-ci.org/imagerjs/imager)
+[![Build Status](https://img.shields.io/travis/imagerjs/imager/generator.svg?style=flat)](https://travis-ci.org/imagerjs/imager)
+[![Gittip](https://img.shields.io/gratipay/madhums.svg?style=flat)](https://www.gratipay.com/madhums/)
+[![Dependencies](https://img.shields.io/david/imagerjs/imager.svg?style=flat)](https://david-dm.org/imagerjs/imager)
 
 **wip**: This is work in progress. Converting to use generators and [graphicsmagick-stream](https://github.com/e-conomic/graphicsmagick-stream) library. The uploading is handled by [pkgcloud](https://github.com/pkgcloud/pkgcloud).
 

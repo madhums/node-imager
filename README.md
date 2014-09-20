@@ -102,6 +102,7 @@ exports.storages = {
 ## Usage
 
 ```js
+var Imager = require('imager');
 var imager = new Imager(variants.item, storages.amazon);
 // You can also pass only the storage without a variant which will upload the
 // original image

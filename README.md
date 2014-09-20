@@ -59,14 +59,19 @@ exports.variants = {
 
 In the above config, item and gallery are variants. thumb and large are presets. Each preset has an options object which is a [graphicsmagick-stream](https://github.com/e-conomic/graphicsmagick-stream#usage) config object.
 
-A preset also accepts a `rename` function, which is called before uploading each file.
+#### preset options
 
-```js
-variants.item.thumb.rename = function (file) {
-  return 'users/1/thumb/' + file.name;
-};
-var imager = new Imager(variants.item, ...);
-```
+- `options` - An object that is passed to graphicsmagick. See what options are available [here](https://github.com/e-conomic/graphicsmagick-stream#usage)
+- `rename` - A function that accepts an object `file` as an argument. It has the following properties: `name`, `size`, `type` and `path`. It is called before uploading each file.
+
+  Example:
+  ```js
+  variants.item.thumb.rename = function (file) {
+    return 'users/1/thumb/' + file.name;
+  };
+  var imager = new Imager(variants.item, ...);
+  ```
+- `original` - A true value. If this option is set, the original image will be uploaded without any image processing.
 
 ### .upload(files, callback)
 

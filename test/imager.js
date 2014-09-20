@@ -3,12 +3,9 @@
 // for preset options
 
 exports.variants = {
-  // variant
-  item: {
-    // preset
-    thumb: {
-      // preset options
-      options: {
+  item: {           // variant
+    thumb: {        // preset
+      options: {    // preset options
         pool: 5,
         scale: { width: 200, height: 150, type: 'contain' },
         crop: { width: 200, height: 150, x: 0, y: 0 },
@@ -20,13 +17,8 @@ exports.variants = {
         // return 'users/1/' + preset + '/' + file.name;
       }
     },
-    // preset
     large: {
-      pool: 5,
-      scale: { width: 800, height: 600, type: 'contain' },
-      crop: { width: 800, height: 600, x: 0, y: 0 },
-      format: 'png',
-      rotate: 'auto'
+      origianl: true  // upload original image without image processing
     }
   }
 };
@@ -42,6 +34,7 @@ exports.storages = {
     username: process.env.IMAGER_RACKSPACE_USERNAME,
     apiKey: process.env.IMAGER_RACKSPACE_KEY,
     authUrl: 'https://lon.auth.api.rackspacecloud.com',
+    region: 'IAD', // https://github.com/pkgcloud/pkgcloud/issues/276
     container: process.env.IMAGER_RACKSPACE_CONTAINER
   },
   amazon: {

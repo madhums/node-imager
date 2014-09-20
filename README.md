@@ -48,9 +48,7 @@ exports.variants = {
       }
     },
     large: {
-      options: {
-        scale: { width: 400, height: 300 }
-      }
+      original: true  // upload original image without image processing
     }
   },
   gallery: {

@@ -31,9 +31,9 @@ A node module to resize, crop and upload images (with different variants and pre
 $ npm install imager
 ```
 
-## API
+## Config
 
-### config
+### variants
 
 ```js
 exports.variants = {
@@ -72,6 +72,43 @@ In the above config, item and gallery are variants. thumb and large are presets.
   var imager = new Imager(variants.item, ...);
   ```
 - `original` - A true value. If this option is set, the original image will be uploaded without any image processing.
+
+### storages
+
+```js
+exports.storages = {
+  local: {
+    provider: 'local',
+    path: '/tmp',
+    mode: 0777
+  },
+  rackspace: {
+    provider: 'rackspace',
+    username: process.env.IMAGER_RACKSPACE_USERNAME,
+    apiKey: process.env.IMAGER_RACKSPACE_KEY,
+    authUrl: 'https://lon.auth.api.rackspacecloud.com',
+    region: 'IAD', // https://github.com/pkgcloud/pkgcloud/issues/276
+    container: process.env.IMAGER_RACKSPACE_CONTAINER
+  },
+  amazon: {
+    provider: 'amazon',
+    key: process.env.IMAGER_S3_KEY,
+    keyId: process.env.IMAGER_S3_KEYID,
+    container: process.env.IMAGER_S3_BUCKET
+  }
+}
+```
+
+## Usage
+
+```js
+var imager = new Imager(variants.item, storages.amazon);
+// You can also pass only the storage without a variant which will upload the
+// original image
+// new Imager(storages.amazon)
+```
+
+## API
 
 ### .upload(files, callback)
 

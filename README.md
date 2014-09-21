@@ -152,9 +152,9 @@ $ npm test
 ## TODO
 
 - Support base64 image uploads
-- Implement `.remove()`
+- <del>Implement `.remove()`</del>
 - Implement `.regenerate()`
-- Test for the api's for rackspace
+- Test the api's for rackspace
 
 ## License
 

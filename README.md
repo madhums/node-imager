@@ -103,9 +103,10 @@ exports.storages = {
 
 ```js
 var Imager = require('imager');
-var imager = new Imager(variants.item, storages.amazon);
-// You can also pass only the storage without a variant which will upload the
-// original image
+var config = require('imager-config.js');
+var imager = new Imager(config.variants.item, config.storages.amazon);
+// You can also pass only the storage without a variant which will simply
+// upload the original image
 // new Imager(storages.amazon)
 ```
 
@@ -135,6 +136,12 @@ imager.upload(files, function (err, avatar) {
 ```sh
 $ npm test
 ```
+
+## TODO
+
+- Support base64 image uploads
+- Implement `.remove()`
+- Implement `.regenerate()`
 
 ## License
 

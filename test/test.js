@@ -75,3 +75,26 @@ describe('imager.upload', function () {
     });
   });
 });
+
+describe('imager.remove', function () {
+  it('should remove the uploaded files', function (done) {
+    var imager = new Imager(config.storages.amazon);
+    var files = [
+      'original_image-1.png',
+      'original_image-2.jpg'
+    ];
+    imager.remove(files, function (err) {
+      should.not.exist(err);
+      done();
+    });
+  });
+
+  it('should remove a single uploaded file', function (done) {
+    var imager = new Imager(config.storages.amazon);
+    var file = 'original_image-2.jpg';
+    imager.remove(file, function (err) {
+      should.not.exist(err);
+      done();
+    });
+  });
+});

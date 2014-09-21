@@ -103,7 +103,7 @@ exports.storages = {
 
 ```js
 var Imager = require('imager');
-var config = require('imager-config.js');
+var config = require('./imager-config.js');
 var imager = new Imager(config.variants.item, config.storages.amazon);
 // You can also pass only the storage without a variant which will simply
 // upload the original image
@@ -118,7 +118,7 @@ var imager = new Imager(config.variants.item, config.storages.amazon);
 
 ```js
 var config = require('./imager-config.js');
-var imager = new Imager(config.variants.item, config.storage);
+var imager = new Imager(config.variants.item, config.storages.amazon);
 imager.upload(files, function (err, avatar) {
   // avatar =>
   // {
@@ -128,7 +128,19 @@ imager.upload(files, function (err, avatar) {
 });
 ```
 
-### .remove()
+### .remove(files, callback)
+
+`files` is an array of files or a single file. A file should be the file name of the image on the storage. `callback` accepts `err` as an argument.
+
+```js
+var config = require('./imager-config.js');
+var imager = new Imager(config.storages.amazon);
+var files = ['file-1.png']; // or just 'file-1.png'
+imager.remove(files, function (err) {
+
+});
+```
+
 ### .regenerate()
 
 ## Tests
@@ -142,6 +154,7 @@ $ npm test
 - Support base64 image uploads
 - Implement `.remove()`
 - Implement `.regenerate()`
+- Test for the api's for rackspace
 
 ## License
 

@@ -33,6 +33,8 @@ $ npm install imager
 
 ## Config
 
+Use a config file. For example [imager-config.js](https://github.com/imagerjs/imager/blob/master/test/imager.js)
+
 ### variants
 
 ```js

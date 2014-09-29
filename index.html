@@ -32,110 +32,176 @@
 <a href="https://www.gratipay.com/madhums/"><img src="https://img.shields.io/gratipay/madhums.svg?style=flat" alt="Gittip"></a>
 <a href="https://david-dm.org/imagerjs/imager"><img src="https://img.shields.io/david/imagerjs/imager.svg?style=flat" alt="Dependencies"></a></p>
 
+<p><strong>wip</strong>: This is work in progress. Converting to use generators and <a href="https://github.com/e-conomic/graphicsmagick-stream">graphicsmagick-stream</a> library. The uploading is handled by <a href="https://github.com/pkgcloud/pkgcloud">pkgcloud</a>. The master branch and 1.0.0-alpha1 tag works only with s3.</p>
+
 <h2>
 <a name="imager" class="anchor" href="#imager"><span class="octicon octicon-link"></span></a>Imager</h2>
 
-<p>A node module to resize, crop and upload images (with different variants and presets) to Rackspace cloudfiles and Amazon S3.</p>
+<p>A node module to resize, crop and upload images (with different variants and presets) to the cloud.</p>
 
 <h2>
-<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h2>
+<a name="dependencies" class="anchor" href="#dependencies"><span class="octicon octicon-link"></span></a>Dependencies</h2>
 
-<p>You need to have <a href="http://www.imagemagick.org/">ImageMagick</a> installed, otherwise you will get weird errors.</p>
+<ol>
+<li>node &gt;= 0.11.12 with <code>--harmony</code> flag</li>
+<li>
+<p>You need to install libgraphicsmagicks.</p>
 
-<h2>
+<p>Using osx</p>
+
+<div class="highlight highlight-sh"><pre><span class="nv">$ </span>brew install graphicsmagick --build-from-source
+</pre></div>
+
+<p>Using ubuntu</p>
+
+<div class="highlight highlight-sh"><pre><span class="nv">$ </span>sudo apt-get install libgraphicsmagick1-dev
+</pre></div>
+</li>
+</ol><h2>
 <a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
 
 <div class="highlight highlight-sh"><pre><span class="nv">$ </span>npm install imager
 </pre></div>
 
 <h2>
+<a name="config" class="anchor" href="#config"><span class="octicon octicon-link"></span></a>Config</h2>
+
+<p>Use a config file. For example <a href="https://github.com/imagerjs/imager/blob/master/test/imager.js">imager-config.js</a></p>
+
+<h3>
+<a name="variants" class="anchor" href="#variants"><span class="octicon octicon-link"></span></a>variants</h3>
+
+<div class="highlight highlight-js"><pre><span class="nx">exports</span><span class="p">.</span><span class="nx">variants</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">item</span><span class="o">:</span> <span class="p">{</span>             <span class="c1">// variant</span>
+    <span class="nx">thumb</span><span class="o">:</span> <span class="p">{</span>          <span class="c1">// preset</span>
+      <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>      <span class="c1">// preset options</span>
+        <span class="nx">pool</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="nx">scale</span><span class="o">:</span> <span class="p">{</span> <span class="nx">width</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span> <span class="nx">height</span><span class="o">:</span> <span class="mi">150</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">'contain'</span> <span class="p">},</span>
+        <span class="nx">crop</span><span class="o">:</span> <span class="p">{</span> <span class="nx">width</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span> <span class="nx">height</span><span class="o">:</span> <span class="mi">150</span><span class="p">,</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">0</span> <span class="p">},</span>
+        <span class="nx">format</span><span class="o">:</span> <span class="s1">'png'</span><span class="p">,</span>
+        <span class="nx">rotate</span><span class="o">:</span> <span class="s1">'auto'</span><span class="p">,</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nx">large</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">original</span><span class="o">:</span> <span class="kc">true</span>  <span class="c1">// upload original image without image processing</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nx">gallery</span><span class="o">:</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+
+<p>In the above config, item and gallery are variants. thumb and large are presets. Each preset has an options object which is a <a href="https://github.com/e-conomic/graphicsmagick-stream#usage">graphicsmagick-stream</a> config object.</p>
+
+<h4>
+<a name="preset-options" class="anchor" href="#preset-options"><span class="octicon octicon-link"></span></a>preset options</h4>
+
+<ul>
+<li>
+<code>options</code> - An object that is passed to graphicsmagick. See what options are available <a href="https://github.com/e-conomic/graphicsmagick-stream#usage">here</a>
+</li>
+<li>
+<p><code>rename</code> - A function that accepts an object <code>file</code> as an argument. It has the following properties: <code>name</code>, <code>size</code>, <code>type</code> and <code>path</code>. It is called before uploading each file.</p>
+
+<p>Example:</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">variants</span><span class="p">.</span><span class="nx">item</span><span class="p">.</span><span class="nx">thumb</span><span class="p">.</span><span class="nx">rename</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">file</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s1">'users/1/thumb/'</span> <span class="o">+</span> <span class="nx">file</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="kd">var</span> <span class="nx">imager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Imager</span><span class="p">(</span><span class="nx">variants</span><span class="p">.</span><span class="nx">item</span><span class="p">,</span> <span class="p">...);</span>
+</pre></div>
+</li>
+<li>
+<code>original</code> - A true value. If this option is set, the original image will be uploaded without any image processing.</li>
+</ul><h3>
+<a name="storages" class="anchor" href="#storages"><span class="octicon octicon-link"></span></a>storages</h3>
+
+<div class="highlight highlight-js"><pre><span class="nx">exports</span><span class="p">.</span><span class="nx">storages</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">local</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">provider</span><span class="o">:</span> <span class="s1">'local'</span><span class="p">,</span>
+    <span class="nx">path</span><span class="o">:</span> <span class="s1">'/tmp'</span><span class="p">,</span>
+    <span class="nx">mode</span><span class="o">:</span> <span class="mi">0777</span>
+  <span class="p">},</span>
+  <span class="nx">rackspace</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">provider</span><span class="o">:</span> <span class="s1">'rackspace'</span><span class="p">,</span>
+    <span class="nx">username</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">IMAGER_RACKSPACE_USERNAME</span><span class="p">,</span>
+    <span class="nx">apiKey</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">IMAGER_RACKSPACE_KEY</span><span class="p">,</span>
+    <span class="nx">authUrl</span><span class="o">:</span> <span class="s1">'https://lon.auth.api.rackspacecloud.com'</span><span class="p">,</span>
+    <span class="nx">region</span><span class="o">:</span> <span class="s1">'IAD'</span><span class="p">,</span> <span class="c1">// https://github.com/pkgcloud/pkgcloud/issues/276</span>
+    <span class="nx">container</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">IMAGER_RACKSPACE_CONTAINER</span>
+  <span class="p">},</span>
+  <span class="nx">amazon</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">provider</span><span class="o">:</span> <span class="s1">'amazon'</span><span class="p">,</span>
+    <span class="nx">key</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">IMAGER_S3_KEY</span><span class="p">,</span>
+    <span class="nx">keyId</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">IMAGER_S3_KEYID</span><span class="p">,</span>
+    <span class="nx">container</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">IMAGER_S3_BUCKET</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2>
 <a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
 
-<p><strong>You need to create imager configuration file with image variants and your storages</strong></p>
-
-<p>Checkout the example config file <code>imager-config-example.js</code> in the repo</p>
-
 <div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">Imager</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'imager'</span><span class="p">);</span>
-    <span class="c1">// See https://github.com/madhums/node-imager/blob/master/imager-config-example.js for example configuration</span>
-  <span class="p">,</span> <span class="nx">imagerConfig</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path/to/imager-config.js'</span><span class="p">)</span>
-  <span class="p">,</span> <span class="nx">imager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Imager</span><span class="p">(</span><span class="nx">imagerConfig</span><span class="p">,</span> <span class="s1">'Rackspace'</span><span class="p">)</span> <span class="c1">// or 'S3' for amazon</span>
+<span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./imager-config.js'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">imager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Imager</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">variants</span><span class="p">.</span><span class="nx">item</span><span class="p">,</span> <span class="nx">config</span><span class="p">.</span><span class="nx">storages</span><span class="p">.</span><span class="nx">amazon</span><span class="p">);</span>
+<span class="c1">// You can also pass only the storage without a variant which will simply</span>
+<span class="c1">// upload the original image</span>
+<span class="c1">// new Imager(storages.amazon)</span>
+</pre></div>
+
+<h2>
+<a name="api" class="anchor" href="#api"><span class="octicon octicon-link"></span></a>API</h2>
+
+<h3>
+<a name="uploadfiles-callback" class="anchor" href="#uploadfiles-callback"><span class="octicon octicon-link"></span></a>.upload(files, callback)</h3>
+
+<p><code>files</code> is an array of files or a single file. A file can be a file object, absolute file path pointing a local file or base64 encoded image data. <code>callback</code> accepts <code>err</code> and an object containing the array of uploaded images.</p>
+
+<div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./imager-config.js'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">imager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Imager</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">variants</span><span class="p">.</span><span class="nx">item</span><span class="p">,</span> <span class="nx">config</span><span class="p">.</span><span class="nx">storages</span><span class="p">.</span><span class="nx">amazon</span><span class="p">);</span>
+<span class="nx">imager</span><span class="p">.</span><span class="nx">upload</span><span class="p">(</span><span class="nx">files</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">avatar</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// avatar =&gt;</span>
+  <span class="c1">// {</span>
+  <span class="c1">//   thumb: [ 'https://fudge.s3.amazonaws.com/user/1/thumb/image-1.png', ],</span>
+  <span class="c1">//   large: [ 'https://fudge.s3.amazonaws.com/user/1/large/image-1.png', ]</span>
+  <span class="c1">// }</span>
+<span class="p">});</span>
 </pre></div>
 
 <h3>
-<a name="uploading-files" class="anchor" href="#uploading-files"><span class="octicon octicon-link"></span></a>Uploading file(s)</h3>
+<a name="removefiles-callback" class="anchor" href="#removefiles-callback"><span class="octicon octicon-link"></span></a>.remove(files, callback)</h3>
 
-<p>The callback recieves an err object, a files array (containing the names of the files which were
-uploaded) and the cdnUri.</p>
+<p><code>files</code> is an array of files or a single file. A file should be the file name of the image on the storage. <code>callback</code> accepts <code>err</code> as an argument.</p>
 
-<p>So if you have a variant, say <code>thumb</code>, then you can access the image by <code>cdnUri+'/'+'thumb_'+files[0]</code>. This would be the complete url of the image</p>
-
-<ol>
-<li>
-<p><strong>Form upload (multiple images)</strong></p>
-
-<p>If you are using express, you will recieve all the form files in <code>req.files</code>.</p>
-
-<div class="highlight highlight-js"><pre><span class="nx">imager</span><span class="p">.</span><span class="nx">upload</span><span class="p">([</span><span class="nx">req</span><span class="p">.</span><span class="nx">files</span><span class="p">.</span><span class="nx">image</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">cdnUri</span><span class="p">,</span> <span class="nx">files</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// do your stuff</span>
-<span class="p">},</span> <span class="s1">'items'</span><span class="p">)</span>
-</pre></div>
-
-<p>Here, <code>items</code> is your scope or variant. If you don't specify the scope or the variant, imager
-will try to look for a default variant named <code>default</code>. You must either specify a variant like
-above or provide a <code>default</code> variant.</p>
-
-<p>ONLY WORKS WITH S3
-If you add an uploadDirectory field to the imager config file as shown in imager-config-example.js, the files uploaded will go into that specific folder rather than the root of the bucket.
-If you leave out the uploadDirectory field, uploads will default to the root of the bucket.</p>
-</li>
-<li>
-<p><strong>Upload local images</strong></p>
-
-<div class="highlight highlight-js"><pre><span class="nx">imager</span><span class="p">.</span><span class="nx">upload</span><span class="p">([</span><span class="s1">'/path/to/file'</span><span class="p">],</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">cdnUri</span><span class="p">,</span> <span class="nx">files</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// do your stuff</span>
-<span class="p">},</span> <span class="s1">'items'</span><span class="p">)</span>
-</pre></div>
-
-<p>Here files can be an array or a string. Make sure the path is
-absolute.</p>
-</li>
-</ol><h3>
-<a name="removing-files" class="anchor" href="#removing-files"><span class="octicon octicon-link"></span></a>Removing file(s)</h3>
-
-<div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">files</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'1330838831049.png'</span><span class="p">,</span> <span class="s1">'1330838831049.png'</span><span class="p">]</span>
+<div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./imager-config.js'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">imager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Imager</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">storages</span><span class="p">.</span><span class="nx">amazon</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">files</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'file-1.png'</span><span class="p">];</span> <span class="c1">// or just 'file-1.png'</span>
 <span class="nx">imager</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">files</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// do your stuff</span>
-<span class="p">},</span> <span class="s1">'items'</span><span class="p">)</span>
+
+<span class="p">});</span>
 </pre></div>
 
-<p><code>files</code> can be array of filenames or a string of single filename.</p>
-
-<p>Even here, if the variant is not specified, imager will try to look for the <code>default</code> variant. If neither
-of them are provided, you will get an error.</p>
-
 <h3>
-<a name="gotchas" class="anchor" href="#gotchas"><span class="octicon octicon-link"></span></a>Gotchas</h3>
+<a name="regenerate" class="anchor" href="#regenerate"><span class="octicon octicon-link"></span></a>.regenerate()</h3>
 
-<ol>
-<li>If your bucket name contains dot(s) make sure you set <code>secure: false</code>, otherwise
-you will run into <a href="https://github.com/LearnBoost/knox/issues/125">this</a>.</li>
-<li>Setting the <code>keepNames: true</code> for the variant retains the name of the uploaded file; otherwise you can set your custom rename function for each variant (check the example imager config)</li>
-<li>If you specify <code>debug: true</code> in the imager config, you can see the logs of uploaded / removed files.</li>
-<li>
-<p>If you want to upload the original image, use </p>
-
-<pre><code>resize: {
-    original: "100%"
-}
-</code></pre>
-</li>
-</ol><h2>
+<h2>
 <a name="tests" class="anchor" href="#tests"><span class="octicon octicon-link"></span></a>Tests</h2>
 
 <div class="highlight highlight-sh"><pre><span class="nv">$ </span>npm <span class="nb">test</span>
 </pre></div>
 
 <h2>
+<a name="todo" class="anchor" href="#todo"><span class="octicon octicon-link"></span></a>TODO</h2>
+
+<ul>
+<li>Support base64 image uploads</li>
+<li><del>Implement <code>.remove()</code></del></li>
+<li>Implement <code>.regenerate()</code>
+</li>
+<li>Test the api's for rackspace</li>
+</ul><h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
 
 <p>MIT</p>

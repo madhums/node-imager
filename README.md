@@ -4,6 +4,8 @@
 
 **wip**: This is work in progress. Converting to use generators and [graphicsmagick-stream](https://github.com/e-conomic/graphicsmagick-stream) library. The uploading is handled by [pkgcloud](https://github.com/pkgcloud/pkgcloud). The master branch and 1.0.0-alpha1 tag works only with s3.
 
+Please use imager@0.4.0 which is stable. The 1.0.0-alpha releases are unstable and not recommended for production.
+
 ## Imager
 
 A node module to resize, crop and upload images (with different variants and presets) to the cloud.

@@ -13,7 +13,7 @@ module.exports = {
       resizeAndCrop: {
         large: {
           resize: '1000x1000',
-          crop: '900x900'
+          crop: '900x900 Center'
         }
       }
     },
